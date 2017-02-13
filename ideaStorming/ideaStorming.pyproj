@@ -24,6 +24,13 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="authapp\admin.py" />
+    <Compile Include="authapp\apps.py" />
+    <Compile Include="authapp\migrations\__init__.py" />
+    <Compile Include="authapp\models.py" />
+    <Compile Include="authapp\tests.py" />
+    <Compile Include="authapp\views.py" />
+    <Compile Include="authapp\__init__.py" />
     <Compile Include="ideaStorming\settings.py" />
     <Compile Include="ideaStorming\urls.py" />
     <Compile Include="ideaStorming\wsgi.py" />
@@ -31,6 +38,8 @@
     <Compile Include="manage.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="authapp\" />
+    <Folder Include="authapp\migrations\" />
     <Folder Include="ideaStorming" />
   </ItemGroup>
   <ItemGroup>
