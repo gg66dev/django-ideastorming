@@ -8,3 +8,4 @@ https://docs.djangoproject.com/en/1.10/topics/auth/default/#how-to-log-a-user-in
 https://docs.djangoproject.com/en/1.10/topics/auth/default/#how-to-log-a-user-out
 """
 
+# FormView para registrar usuarios
