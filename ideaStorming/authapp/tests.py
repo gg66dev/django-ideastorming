@@ -1,10 +1,13 @@
+from unittest import skip
 from django_webtest import WebTest
 
 from django.test import TestCase
 from .forms import UserForm
 from .models import User
 
+from django.contrib.auth import authenticate
 
+#form of register test
 class UserFormTest(TestCase):
 
     def setUp(self):
@@ -14,16 +17,14 @@ class UserFormTest(TestCase):
             email = "prueba@email.cl",
             company = "myCompany S.A.",
             country = "Chile",
-            password = "1234",
+            password = "pbkdf2_sha256$30000$sIJRxPDvtciA$Pqc9rmC+wH8AzXUpw8Zvx0LECqrmIf7CLASzw9s0jwE=", #abcd
        )
+
 
     def test_init(self):
         UserForm(self.user)
 
-    #def test_init_without_entry(self):
-    #    with self.assertRaises(KeyError):
-    #        UserForm()
-
+    
     def test_valid_data(self):
         form = UserForm({
             'first_name': 'Pedro',
@@ -41,7 +42,9 @@ class UserFormTest(TestCase):
         self.assertEqual(user.email, "pereira@email.cl")
         self.assertEqual(user.company, "other company SA")
         self.assertEqual(user.country, "Chile")
-        self.assertEqual(user.password, "abcd")
+        self.assertNotEqual(user.password, "abcd") # password is now encrypted
+        self.assertTrue(len(user.password) > 20) # ~ length of encrypt password
+        self.assertEqual(user.username, "pereira@email.cl")
     
     def test_blank_data(self):
         form = UserForm({})
@@ -58,6 +61,7 @@ class UserFormTest(TestCase):
         ])
         
 
+# register view test
 class UserViewTest(WebTest):
     def test_view_page(self):
         page = self.app.get("/register/")
@@ -71,15 +75,75 @@ class UserViewTest(WebTest):
     def test_form_success(self):
         page = self.app.get("/register/")
         page.form['company'] = "other company SA"
+        page.form['confirm_password'] = "abcdef"
+        page.form['country'] = "Chile"
+        page.form['email'] = "pereira2@email.cl"
+        page.form['first_name'] = "Pedro"
+        page.form['last_name'] = "Pereira"
+        page.form['password'] = "abcdef"
+        page = page.form.submit()
+        self.assertRedirects(page,"/register/")
+        user = User.objects.get(username='pereira2@email.cl')
+        self.assertNotEqual(user,None);
+        self.assertEqual(user.username,'pereira2@email.cl')
+        self.assertNotEqual(user.password,'abcdef') # password is now encrypted
+        self.assertTrue(len(user.password) > 20) # ~ length of encrypt password
+   
+    def test_passwords_dont_match(self):
+        page = self.app.get("/register/")
+        page.form['company'] = "other company SA"
         page.form['confirm_password'] = "abcd"
         page.form['country'] = "Chile"
         page.form['email'] = "pereira@email.cl"
         page.form['first_name'] = "Pedro"
         page.form['last_name'] = "Pereira"
+        page.form['password'] = "1234"
+        page = page.form.submit()
+        self.assertContains(page,"Passwords dont match.")
+    
+
+
+#login - logout test
+class LogInLogOutTest(WebTest):
+    fixtures = ['users']
+
+    def test_view_page(self):
+        page = self.app.get("/login/")
+        self.assertEqual(len(page.forms),1)
+
+    def test_login_success(self):
+        page = self.app.get("/login/")
+        page.form['email'] = "prueba@email.cl"
         page.form['password'] = "abcd"
         page = page.form.submit()
-        self.assertRedirects(page,"/register/")
+        #redirecct to page with user info
+        self.assertContains(page,"Hello, Gustavo Pfeifer.")
 
-    #todo: que confirm_password y password no son iguales
+    def test_login_blank_data(self):
+        page = self.app.get("/login/")
+        page.form['email'] = ""
+        page.form['password'] = ""
+        page = page.form.submit()
+        #redirect to page with error message
+        self.assertContains(page,"This field is required.")
 
-    
+    def test_login_wrong_username(self):
+        page = self.app.get("/login/")
+        page.form['email'] = "prueba666@email.cl"
+        page.form['password'] = "1234"
+        page = page.form.submit()
+        #redirect to page with error message
+        self.assertContains(page,"You entered an incorrect username or password")
+
+    def test_login_wrong_password(self):
+        page = self.app.get("/login/")
+        page.form['email'] = "prueba@email.cl"
+        page.form['password'] = "12345678"
+        page = page.form.submit()
+        #redirect to page with error message
+        self.assertContains(page,"You entered an incorrect username or password")
+
+    def test_logout_success(self):
+        self.test_login_success()
+        page = self.app.get("/logout/")
+        self.assertEqual(len(page.forms),1)

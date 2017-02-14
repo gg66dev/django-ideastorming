@@ -1,15 +1,31 @@
 from django.shortcuts import render
 from django.views.generic import FormView
+from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 
 from .models import User
-from .forms import UserForm
+from .forms import UserForm, LoginForm
 
-"""
-ref:
-https://docs.djangoproject.com/en/1.10/topics/auth/default/#how-to-log-a-user-in
-https://docs.djangoproject.com/en/1.10/topics/auth/default/#how-to-log-a-user-out
-http://test-driven-django-development.readthedocs.io/en/latest/05-forms.html
-"""
+def login(request):
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data.get('password')
+            username =  form.cleaned_data.get('email')
+            user = authenticate(username=username, password=password)
+            django_login(request,user)
+            #use user info to display in the view
+            fullname = user.first_name + " " + user.last_name
+            return render(request, 'login.html', {'form': form, 'fullname': fullname})
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+    
+
+def logout(request):
+    django_logout(request)
+    form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
 
 
 # FormView para registrar usuarios
@@ -18,3 +34,7 @@ class UserRegister(FormView):
     template_name = 'user_register.html'
     form_class = UserForm
     success_url = '/register/'
+
+    def form_valid(self, form):
+        form.save()
+        return super(UserRegister, self).form_valid(form)

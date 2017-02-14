@@ -1,0 +1,22 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "prueba@email.cl",
+      "password": "pbkdf2_sha256$30000$sIJRxPDvtciA$Pqc9rmC+wH8AzXUpw8Zvx0LECqrmIf7CLASzw9s0jwE=",
+      "first_name": "Gustavo",
+      "last_name": "Pfeifer",
+      "email": "prueba@email.cl"
+    }
+  },
+  {
+    "model": "authapp.User",
+    "pk": 1,
+    "fields": {
+      "company": "myCompany S.A.",
+      "country": "Chile"
+    }
+  }
+  
+]

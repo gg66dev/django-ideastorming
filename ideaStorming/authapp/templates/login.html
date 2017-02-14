@@ -1,0 +1,9 @@
+{% if user.is_authenticated %}
+    <p>Hello, {{ fullname }}.</p>
+{% else %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login" />
+    </form>
+{% endif %}

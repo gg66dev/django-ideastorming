@@ -32,6 +32,9 @@
     <Compile Include="authapp\migrations\__init__.py" />
     <Compile Include="authapp\models.py" />
     <Compile Include="authapp\tests.py" />
+    <Compile Include="authapp\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="authapp\views.py" />
     <Compile Include="authapp\__init__.py" />
     <Compile Include="ideaStorming\settings.py" />
@@ -43,10 +46,17 @@
   <ItemGroup>
     <Folder Include="authapp\" />
     <Folder Include="authapp\migrations\" />
+    <Folder Include="authapp\fixtures\" />
+    <Folder Include="authapp\templates\" />
     <Folder Include="ideaStorming" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{02205482-39b9-4a1c-b98a-16100d780116}\3.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="authapp\fixtures\users.json" />
+    <Content Include="authapp\templates\login.html" />
+    <Content Include="authapp\templates\user_register.html" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
