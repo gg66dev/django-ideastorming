@@ -43,13 +43,14 @@ class UserFormTest(TestCase):
     def test_blank_data(self):
         form = UserForm({})
         self.assertFalse(form.is_valid())
-        print(form.errors)
-        
-        self.assertEqual(form.errors,{
-            'email': ['This field is required'],
-            'company': ['This field is required'],
-            'country': ['This field is required'],
-            'password': ['This field is required'],
-            'confirm_password': ['This field is required']
-        })
+        check_list = sorted(list(form.errors.items()))
+        self.assertEqual(check_list,[
+            ('company',  ['This field is required.']),
+            ('confirm_password', ['This field is required.']),
+            ('country',  ['This field is required.']),
+            ('email',  ['This field is required.']),
+            ('first_name',  ['This field is required.']),
+            ('last_name',  ['This field is required.']),
+            ('password', ['This field is required.'])
+        ])
         

@@ -14,7 +14,7 @@
     <InterpreterId>{02205482-39b9-4a1c-b98a-16100d780116}</InterpreterId>
     <InterpreterVersion>3.5</InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>runserver</CommandLineArguments>
+    <CommandLineArguments>test authapp</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
@@ -26,6 +26,9 @@
   <ItemGroup>
     <Compile Include="authapp\admin.py" />
     <Compile Include="authapp\apps.py" />
+    <Compile Include="authapp\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="authapp\migrations\__init__.py" />
     <Compile Include="authapp\models.py" />
     <Compile Include="authapp\tests.py" />
