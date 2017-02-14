@@ -1,6 +1,9 @@
+from django_webtest import WebTest
+
 from django.test import TestCase
 from .forms import UserForm
 from .models import User
+
 
 class UserFormTest(TestCase):
 
@@ -54,3 +57,29 @@ class UserFormTest(TestCase):
             ('password', ['This field is required.'])
         ])
         
+
+class UserViewTest(WebTest):
+    def test_view_page(self):
+        page = self.app.get("/register/")
+        self.assertEqual(len(page.forms),1)
+
+    def test_form_error(self):
+        page = self.app.get("/register/")
+        page = page.form.submit()
+        self.assertContains(page,"This field is required.")
+
+    def test_form_success(self):
+        page = self.app.get("/register/")
+        page.form['company'] = "other company SA"
+        page.form['confirm_password'] = "abcd"
+        page.form['country'] = "Chile"
+        page.form['email'] = "pereira@email.cl"
+        page.form['first_name'] = "Pedro"
+        page.form['last_name'] = "Pereira"
+        page.form['password'] = "abcd"
+        page = page.form.submit()
+        self.assertRedirects(page,"/register/")
+
+    #todo: que confirm_password y password no son iguales
+
+    
