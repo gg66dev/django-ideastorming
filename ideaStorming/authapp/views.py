@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login as django_login, logout as d
 from .models import User
 from .forms import UserForm, LoginForm
 
+
 def login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -18,13 +19,12 @@ def login(request):
             return render(request, 'login.html', {'form': form, 'fullname': fullname})
     else:
         form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'index.html', {'form': form , 'display_login_form':True})
     
 
 def logout(request):
     django_logout(request)
-    form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+    return redirect('/') #redirect to index
 
 
 
