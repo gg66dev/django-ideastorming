@@ -16,7 +16,7 @@ def login(request):
             django_login(request,user)
             #use user info to display in the view
             fullname = user.first_name + " " + user.last_name
-            return render(request, 'index.html', {'form': form, 'fullname': fullname})
+            return render(request, 'index.html', { 'fullname': fullname})
     else:
         form = LoginForm()
     return render(request, 'index.html', {'form': form , 'display_login_form':True})

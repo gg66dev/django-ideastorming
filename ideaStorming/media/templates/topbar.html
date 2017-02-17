@@ -1,0 +1,30 @@
+<div class="masthead">
+    <h2 class="text-muted">Idea Storming</h2>
+    {% if user.is_authenticated %}
+    <div class="text-right">
+        <h5 class="text-muted" style="padding-right: 20px; font-weight: bold;">Hello, {{ fullname }}</h5>
+    </div>
+    {% endif %}
+    <nav>
+        {% if user.is_authenticated %}
+        <ul class="nav nav-justified">
+            <li class="active">
+                <a href="{% url 'index' %}">Home</a>
+            </li>
+            <li>
+                <a href="#">New Project</a>
+            </li>
+            <li>
+                <a href="#">My Projects</a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">logout</a>
+            </li>
+        </ul>
+        {% else %}
+        <ul class="nav nav-justified">
+                {% include "authapp/login.html" %}
+        </ul>
+        {% endif %}
+    </nav>
+</div>
