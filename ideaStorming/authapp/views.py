@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import FormView
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 
@@ -16,7 +16,7 @@ def login(request):
             django_login(request,user)
             #use user info to display in the view
             fullname = user.first_name + " " + user.last_name
-            return render(request, 'login.html', {'form': form, 'fullname': fullname})
+            return render(request, 'index.html', {'form': form, 'fullname': fullname})
     else:
         form = LoginForm()
     return render(request, 'index.html', {'form': form , 'display_login_form':True})

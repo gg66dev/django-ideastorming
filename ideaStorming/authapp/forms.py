@@ -30,7 +30,10 @@ class LoginForm(forms.Form):
         return self.cleaned_data                            
 
 class UserForm(ModelForm):
-    confirm_password = forms.CharField()
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    email = forms.CharField(required=True)
+    confirm_password = forms.CharField(required=True)
     class Meta:
         model = User
         fields = [ 'first_name', 'last_name' , 'email' ,'company', 'country', 'password', 'confirm_password']

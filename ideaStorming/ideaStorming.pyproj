@@ -42,21 +42,51 @@
     <Compile Include="ideaStorming\wsgi.py" />
     <Compile Include="ideaStorming\__init__.py" />
     <Compile Include="manage.py" />
+    <Compile Include="projectapp\admin.py" />
+    <Compile Include="projectapp\apps.py" />
+    <Compile Include="projectapp\migrations\__init__.py" />
+    <Compile Include="projectapp\models.py" />
+    <Compile Include="projectapp\tests.py" />
+    <Compile Include="projectapp\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\views.py" />
+    <Compile Include="projectapp\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="authapp\" />
     <Folder Include="authapp\migrations\" />
     <Folder Include="authapp\fixtures\" />
-    <Folder Include="authapp\templates\" />
     <Folder Include="ideaStorming" />
+    <Folder Include="media\" />
+    <Folder Include="media\js\" />
+    <Folder Include="media\css\" />
+    <Folder Include="media\templates\" />
+    <Folder Include="media\templates\authapp\" />
+    <Folder Include="media\templates\projectapp\" />
+    <Folder Include="projectapp\" />
+    <Folder Include="projectapp\migrations\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{02205482-39b9-4a1c-b98a-16100d780116}\3.5" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="authapp\fixtures\users.json" />
-    <Content Include="authapp\templates\login.html" />
-    <Content Include="authapp\templates\user_register.html" />
+    <Content Include="media\css\bootstrap-theme.css" />
+    <Content Include="media\css\bootstrap-theme.css.map" />
+    <Content Include="media\css\bootstrap-theme.min.css" />
+    <Content Include="media\css\bootstrap-theme.min.css.map" />
+    <Content Include="media\css\bootstrap.css" />
+    <Content Include="media\css\bootstrap.css.map" />
+    <Content Include="media\css\bootstrap.min.css" />
+    <Content Include="media\css\bootstrap.min.css.map" />
+    <Content Include="media\js\bootstrap.js" />
+    <Content Include="media\js\bootstrap.min.js" />
+    <Content Include="media\js\npm.js" />
+    <Content Include="media\templates\authapp\login.html" />
+    <Content Include="media\templates\authapp\user_register.html" />
+    <Content Include="media\templates\base.html" />
+    <Content Include="media\templates\projectapp\index.html" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
