@@ -80,6 +80,7 @@
     <Content Include="media\css\bootstrap.css.map" />
     <Content Include="media\css\bootstrap.min.css" />
     <Content Include="media\css\bootstrap.min.css.map" />
+    <Content Include="media\css\justified-nav.css" />
     <Content Include="media\js\bootstrap.js" />
     <Content Include="media\js\bootstrap.min.js" />
     <Content Include="media\js\npm.js" />
@@ -87,6 +88,7 @@
     <Content Include="media\templates\authapp\user_register.html" />
     <Content Include="media\templates\base.html" />
     <Content Include="media\templates\projectapp\index.html" />
+    <Content Include="media\templates\topbar.html" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

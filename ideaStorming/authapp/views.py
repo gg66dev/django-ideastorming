@@ -24,7 +24,8 @@ def login(request):
 
 def logout(request):
     django_logout(request)
-    return redirect('/') #redirect to index
+    form = LoginForm()
+    return render(request, 'index.html', {'form': form , 'display_login_form':True})
 
 
 
