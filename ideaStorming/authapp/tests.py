@@ -12,8 +12,8 @@ class UserFormTest(TestCase):
 
     def setUp(self):
         self.user = User(
-            first_name = "Gustavo",
-            last_name = "Pfeifer",
+            first_name = "Juan",
+            last_name = "Perez",
             email = "prueba@email.cl",
             company = "myCompany S.A.",
             country = "Chile",
@@ -118,7 +118,7 @@ class LogInLogOutTest(WebTest):
         page.form['password'] = "abcd"
         page = page.form.submit()
         #redirecct to page with user info
-        self.assertContains(page,"Hello, Gustavo Pfeifer.")
+        self.assertContains(page,"Hello, Juan Perez.")
 
     @skip('no requeried submit form for the validation')
     def test_login_blank_data(self):
