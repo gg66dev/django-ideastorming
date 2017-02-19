@@ -2,23 +2,35 @@
     <h2 class="text-muted">Idea Storming</h2>
     {% if user.is_authenticated %}
     <div class="text-right">
-        <h5 class="text-muted" style="padding-right: 20px; font-weight: bold;">Hello, {{ fullname }}.</h5>
+        <h5 class="text-muted" style="padding-right: 20px; font-weight: bold;">Hello, {{ request.user.first_name}}  {{ request.user.last_name }}.</h5>
     </div>
     {% endif %}
     <nav>
         {% if user.is_authenticated %}
         <ul class="nav nav-justified">
-            <li class="active">
+            {% if page == 'home' %}
+                <li class="active">
+            {% else %}
+                <li>
+            {% endif %}
                 <a href="{% url 'index' %}">Home</a>
             </li>
-            <li>
-                <a href="#">New Project</a>
+            {% if page == 'new-project' %}
+                 <li class="active">
+            {% else %}
+                   <li>
+            {% endif %}
+                <a href="{% url 'new-project' %}">New Project</a>
             </li>
-            <li>
+            {% if page == 'my-project' %}
+                <li class="active">
+            {% else %}
+                <li>
+            {% endif %}
                 <a href="#">My Projects</a>
             </li>
             <li>
-                <a href="{% url 'logout' %}">logout</a>
+                <a href="{% url 'logout' %}">Logout</a>
             </li>
         </ul>
         {% else %}

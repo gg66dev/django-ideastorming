@@ -44,6 +44,9 @@
     <Compile Include="manage.py" />
     <Compile Include="projectapp\admin.py" />
     <Compile Include="projectapp\apps.py" />
+    <Compile Include="projectapp\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="projectapp\migrations\__init__.py" />
     <Compile Include="projectapp\models.py" />
     <Compile Include="projectapp\tests.py" />
@@ -86,9 +89,10 @@
     <Content Include="media\js\bootstrap.min.js" />
     <Content Include="media\js\npm.js" />
     <Content Include="media\templates\authapp\login.html" />
-    <Content Include="media\templates\authapp\user_register.html" />
+    <Content Include="media\templates\authapp\new_user.html" />
     <Content Include="media\templates\base.html" />
     <Content Include="media\templates\projectapp\index.html" />
+    <Content Include="media\templates\projectapp\new_project.html" />
     <Content Include="media\templates\topbar.html" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />

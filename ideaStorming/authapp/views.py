@@ -6,6 +6,10 @@ from .models import User
 from .forms import UserForm, LoginForm
 
 
+"""
+VIEW FROM AUTH APP
+"""
+
 def login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -15,24 +19,21 @@ def login(request):
             user = authenticate(username=username, password=password)
             django_login(request,user)
             #use user info to display in the view
-            fullname = user.first_name + " " + user.last_name
-            return render(request, 'index.html', { 'fullname': fullname})
+            return render(request, 'index.html', { 'page' : 'home'})
     else:
         form = LoginForm()
-    return render(request, 'index.html', {'form': form , 'display_login_form':True})
+    return render(request, 'index.html', {'form': form, 'display_login_form':True, 'page' : 'home'})
     
 
 def logout(request):
     django_logout(request)
     form = LoginForm()
-    return render(request, 'index.html', {'form': form , 'display_login_form':True})
+    return redirect('index')
 
 
-
-# FormView para registrar usuarios
 class UserRegister(FormView):
     model = User
-    template_name = 'user_register.html'
+    template_name = 'new_user.html'
     form_class = UserForm
     success_url = '/register/'
 
