@@ -19,10 +19,7 @@
 <li></li>
 {% endif %}
 
-<script>
-    $( document ).ready(function() {
-        {% for error in form.non_field_errors %}
-             alert("{{ error }}");
-        {% endfor %}
-    });
-</script>
+<!-- login errors-->
+{% for error in form.non_field_errors %}
+    <input name="error" id="loggin_error_{{ forloop.counter0 }}" type="hidden" value="{{ error }}" />
+{% endfor %}
