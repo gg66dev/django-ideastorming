@@ -1,4 +1,5 @@
 from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -34,10 +35,12 @@ class ProjectNewView(CreateView):
         context['page'] = 'new-project'
         return context
 
-#   ????
-#    def form_valid(self, form):
-#        form.save()
-#        return super(NewProject, self).form_valid(form) 
-
-
-   
+@method_decorator(login_required, name='dispatch')
+class ProjectListView(ListView):
+    model = Project
+    template_name = 'list_project.html'
+     
+    def get_queryset(self):
+        qs = super(ProjectListView, self).get_queryset()
+        return qs.filter(user=self.request.user)
+       

@@ -1,0 +1,101 @@
+[
+
+  {
+    "model": "projectapp.Tag",
+    "pk": 1,
+    "fields": {
+      "tag": "cat"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 2,
+    "fields": {
+      "tag": "animals"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 3,
+    "fields": {
+      "tag": "virtual shops"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 4,
+    "fields": {
+      "tag": "customer"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 5,
+    "fields": {
+      "tag": "travels"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 6,
+    "fields": {
+      "tag": "money"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 7,
+    "fields": {
+      "tag": "entertainment"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 8,
+    "fields": {
+      "tag": "cars"
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 1,
+    "fields": {
+      "title": "Virtual cat shop",
+      "summary": "A virtual Shop with cat stuff where the customer can buy things with virtual currency, this currency the customer get, buying things in other physic shops.",
+      "advantages": "The customer buy thing with virtual currency.",
+      "investment": "$501 - $800 USD",
+      "date_creation": "2017-01-10 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-10 21:14:03.488920+00:00",
+      "user": 1,
+      "tags": [ 1,5,6]
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 2,
+    "fields": {
+      "title": "Modern suitcase",
+      "summary": "A modern suitcase that lock is controlled by a mobile app, the suitcase has a GPS also.",
+      "advantages": "the suitcase is very secure and if it is lost, is easy to find it.",
+      "investment": "$801 - $1000 USD",
+      "date_creation": "2017-01-13 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-13 21:14:03.488920+00:00",
+      "user": 1,
+      "tags": [ 2,5,8]
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 3,
+    "fields": {
+      "title": "App that recommend Restaurants",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1,3,4,7]
+    }
+  }
+]
