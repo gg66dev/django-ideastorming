@@ -27,13 +27,14 @@ Project ideastorming
     * all registered user logged must be able of qualify the project, attached a mark and add some note that explains some possibles improvements to the projects. 
 * the user must be able to update the project for include all the improvements given by the community. 
     * in the moment of doing the update, the user must be able to mark the actual qualification for ignoring it and it doesn't add to the global mark. 
-        * mark el comment like "add the idea to the project." (?)
+        * mark the comment like "add the idea to the project." (?)
     * also when the user makes a change to the project must update the last modification update and the updated project must appear like a new project.
 
 # stack
 
+* python 3.5
 * django 1.10
 * posgresql
-
+* bootstrap + jquery
 
 

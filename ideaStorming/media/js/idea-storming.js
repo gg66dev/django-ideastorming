@@ -5,12 +5,20 @@ var app = (function ($) {
                 //display login errors like alerts
                 $("input[name='error']").each(function() {
                     alert($( this ).val());
-                });;
+                });
             },
             new_user: function () {
 
             },
             new_project: function () {
+                //use taggle to catch tags.
+                var $tag_input = $("#id_tags");
+                $tag_input.hide();
+                $tag_input.parent().html("<div id='tag_container'></div>");
+                new Taggle('tag_container');
+
+                //when press save, move tags to hiden input.
+
 
             }
 

@@ -14,7 +14,7 @@
     <InterpreterId>{02205482-39b9-4a1c-b98a-16100d780116}</InterpreterId>
     <InterpreterVersion>3.5</InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>test authapp</CommandLineArguments>
+    <CommandLineArguments>test</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
@@ -69,6 +69,7 @@
     <Folder Include="media\templates\projectapp\" />
     <Folder Include="projectapp\" />
     <Folder Include="projectapp\migrations\" />
+    <Folder Include="projectapp\fixtures\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{02205482-39b9-4a1c-b98a-16100d780116}\3.5" />
@@ -85,15 +86,19 @@
     <Content Include="media\css\bootstrap.min.css.map" />
     <Content Include="media\css\idea-storming.css" />
     <Content Include="media\css\justified-nav.css" />
+    <Content Include="media\css\taggle.min.css" />
     <Content Include="media\js\bootstrap.js" />
     <Content Include="media\js\bootstrap.min.js" />
+    <Content Include="media\js\idea-storming.js" />
     <Content Include="media\js\npm.js" />
+    <Content Include="media\js\taggle.min.js" />
     <Content Include="media\templates\authapp\login.html" />
     <Content Include="media\templates\authapp\new_user.html" />
     <Content Include="media\templates\base.html" />
     <Content Include="media\templates\projectapp\index.html" />
     <Content Include="media\templates\projectapp\new_project.html" />
     <Content Include="media\templates\topbar.html" />
+    <Content Include="projectapp\fixtures\users.json" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

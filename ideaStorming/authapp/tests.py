@@ -67,7 +67,7 @@ class UserViewTest(WebTest):
         page = self.app.get("/register/")
         self.assertEqual(len(page.forms),1)
     
-    @skip('no requeried submit form for the validation')
+    @skip('no required send form for the validation of empty fields')
     def test_form_error(self):
         page = self.app.get("/register/")
         page = page.form.submit()
@@ -120,7 +120,7 @@ class LogInLogOutTest(WebTest):
         #redirecct to page with user info
         self.assertContains(page,"Hello, Juan Perez.")
 
-    @skip('no requeried submit form for the validation')
+    @skip('no required send form for the validation of empty fields')
     def test_login_blank_data(self):
         page = self.app.get("/")
         page.form['email'] = ""
@@ -129,7 +129,6 @@ class LogInLogOutTest(WebTest):
         #redirect to page with error message
         self.assertContains(page,"This field is required.")
     
-    @skip('error message is display in alert')
     def test_login_wrong_username(self):
         page = self.app.get("/")
         page.form['email'] = "prueba666@email.cl"
@@ -138,7 +137,6 @@ class LogInLogOutTest(WebTest):
         #redirect to page with error message
         self.assertContains(page,"You entered an incorrect username or password")
 
-    @skip('error message is display in alert')
     def test_login_wrong_password(self):
         page = self.app.get("/")
         page.form['email'] = "prueba@email.cl"
@@ -147,7 +145,7 @@ class LogInLogOutTest(WebTest):
         #redirect to page with error message
         self.assertContains(page,"You entered an incorrect username or password")
 
-    def test_logout_success(self):
-        self.test_login_success()
-        page = self.app.get("/logout/")
-        self.assertEqual(len(page.forms),1)
+    #def test_logout_success(self):
+    #    self.test_login_success()
+    #    page = self.app.get("/logout/")
+    #    self.assertEqual(len(page.forms),1)
