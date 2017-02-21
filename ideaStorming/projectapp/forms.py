@@ -5,7 +5,7 @@ from authapp.models import User
 from .models import Project, Tag
 
 class NewProjectForm(ModelForm):
-    tags = forms.CharField(required=True, max_length= 200)
+    tags = forms.CharField(required=False, max_length= 200)
     
     class Meta:
         model = Project
@@ -16,6 +16,13 @@ class NewProjectForm(ModelForm):
         self.app_user = app_user
         super(NewProjectForm, self).__init__(*args, **kwargs)
     
+    def clean_tags(self):
+        tags = self.cleaned_data['tags']
+        if not tags:
+            raise forms.ValidationError("This field is required.")
+        return tags
+
+
     def save(self, commit=True):
         """
         tags - would parse de values of field tag from form, create 

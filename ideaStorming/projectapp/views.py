@@ -1,4 +1,5 @@
-from django.views.generic.edit import CreateView
+#from django.views.generic.edit import CreateView
+from django.views.generic import FormView
 from django.views.generic.list import ListView
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
@@ -19,7 +20,7 @@ def index(request):
 
 
 @method_decorator(login_required, name='dispatch')
-class ProjectNewView(CreateView):
+class ProjectNewView(FormView):
     model = Project
     template_name = 'new_project.html'
     success_url = '/new-project/'
@@ -34,6 +35,10 @@ class ProjectNewView(CreateView):
         context = super(ProjectNewView, self).get_context_data(**kwargs)
         context['page'] = 'new-project'
         return context
+
+    def form_valid(self, form):
+        form.save()
+        return super(ProjectNewView, self).form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
 class ProjectListView(ListView):

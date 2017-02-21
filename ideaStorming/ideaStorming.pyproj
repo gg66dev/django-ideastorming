@@ -10,12 +10,14 @@
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
-    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <LaunchProvider>Django launcher</LaunchProvider>
     <InterpreterId>{02205482-39b9-4a1c-b98a-16100d780116}</InterpreterId>
     <InterpreterVersion>3.5</InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>test</CommandLineArguments>
+    <CommandLineArguments>runserver</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <WebBrowserUrl>http://127.0.0.1:8000/</WebBrowserUrl>
+    <WebBrowserPort>8000</WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -96,8 +98,10 @@
     <Content Include="media\templates\authapp\new_user.html" />
     <Content Include="media\templates\base.html" />
     <Content Include="media\templates\projectapp\index.html" />
+    <Content Include="media\templates\projectapp\list_project.html" />
     <Content Include="media\templates\projectapp\new_project.html" />
     <Content Include="media\templates\topbar.html" />
+    <Content Include="projectapp\fixtures\projects.json" />
     <Content Include="projectapp\fixtures\users.json" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />

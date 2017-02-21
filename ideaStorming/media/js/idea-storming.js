@@ -11,14 +11,17 @@ var app = (function ($) {
 
             },
             new_project: function () {
-                //use taggle to catch tags.
+              /*  //use taggle to catch tags {https://sean.is/poppin/tags}.
                 var $tag_input = $("#id_tags");
                 $tag_input.hide();
+                $tag_input.val("algo");
                 $tag_input.parent().html("<div id='tag_container'></div>");
                 new Taggle('tag_container');
 
                 //when press save, move tags to hiden input.
-
+                $("#save-btn").click(function () {
+                    console.log();
+                });*/
 
             }
 
