@@ -97,6 +97,9 @@
     <Content Include="media\templates\authapp\login.html" />
     <Content Include="media\templates\authapp\new_user.html" />
     <Content Include="media\templates\base.html" />
+    <Content Include="media\templates\pagination.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="media\templates\projectapp\index.html" />
     <Content Include="media\templates\projectapp\my_projects.html" />
     <Content Include="media\templates\projectapp\new_project.html" />

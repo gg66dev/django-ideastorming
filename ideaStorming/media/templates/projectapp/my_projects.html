@@ -23,7 +23,10 @@
                 <td class="text-left">{{ projects.title  }}</td>
                 <td class="text-center">{{ projects.date_creation|date:"Y-m-d" }}</td>
                 <td class="text-center">{{ projects.date_last_modification|date:"Y-m-d" }}</td>
-                <td><button type="button" class="btn btn-default" style="padding: 14px 14px;font-size: 12px;">View Detail</button></td>
+                <td>    
+                    <button type="button" class="btn btn-default" style="padding: 14px 14px;font-size: 12px;">View Detail</button>
+                    <button type="button" class="btn btn-default" style="padding: 14px 14px;font-size: 12px;">Comments</button>
+                </td>
                 {% empty %}
                 <td colspan="4" > You dont have any project yet. =(</td>
             </tr>

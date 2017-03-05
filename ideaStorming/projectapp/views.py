@@ -59,17 +59,20 @@ class ProjectListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ProjectListView, self).get_context_data(**kwargs) 
         qs = super(ProjectListView, self).get_queryset()
-        list_exam = qs.filter(user=self.request.user)
-        paginator = Paginator(list_exam, self.paginate_by)
-
+        list_project = qs.filter(user=self.request.user)
+        if len(list_project) == 0:
+            context['object_list'] = list_project
+            context['is_paginated'] = False
+            return context
+        
+        paginator = Paginator(list_project, self.paginate_by)
         page = self.request.GET.get('page')
-
         try:
-            file_exams = paginator.page(page)
+            project_page = paginator.page(page)
         except PageNotAnInteger:
-            file_exams = paginator.page(1)
+            project_page = paginator.page(1)
         except EmptyPage:
-            file_exams = paginator.page(paginator.num_pages)
+            project_page = paginator.page(paginator.num_pages)
 
-        context['object_list'] = file_exams
+        context['object_list'] = project_page
         return context
