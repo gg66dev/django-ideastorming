@@ -98,7 +98,7 @@
     <Content Include="media\templates\authapp\new_user.html" />
     <Content Include="media\templates\base.html" />
     <Content Include="media\templates\projectapp\index.html" />
-    <Content Include="media\templates\projectapp\list_project.html" />
+    <Content Include="media\templates\projectapp\my_projects.html" />
     <Content Include="media\templates\projectapp\new_project.html" />
     <Content Include="media\templates\topbar.html" />
     <Content Include="projectapp\fixtures\projects.json" />
