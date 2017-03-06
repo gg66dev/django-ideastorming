@@ -1,9 +1,11 @@
 #from django.views.generic.edit import CreateView
 from django.views.generic import FormView
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
@@ -51,11 +53,6 @@ class ProjectListView(ListView):
     template_name = 'my_projects.html'
     paginate_by = 15 
 
-    #def get_queryset(self):
-    #    qs = super(ProjectListView, self).get_queryset()
-    #    return qs.filter(user=self.request.user)
-       
-
     def get_context_data(self, **kwargs):
         context = super(ProjectListView, self).get_context_data(**kwargs) 
         qs = super(ProjectListView, self).get_queryset()
@@ -64,6 +61,10 @@ class ProjectListView(ListView):
             context['object_list'] = list_project
             context['is_paginated'] = False
             return context
+
+        #use the title of the project like url parameter for the detail page.
+        for project in list_project:
+            project.url_detail = project.title.replace(" ", "_")
         
         paginator = Paginator(list_project, self.paginate_by)
         page = self.request.GET.get('page')
@@ -76,3 +77,19 @@ class ProjectListView(ListView):
 
         context['object_list'] = project_page
         return context
+
+
+
+@method_decorator(login_required, name='dispatch')
+class ProjectDetailView(DetailView):
+    model = Project
+    template_name = 'detail_project.html'
+    
+    #get the object with the title pass in the url
+    def get_object(self):
+        title = self.kwargs['project_title'].replace("_", " ")
+        try:
+            project = self.model.objects.filter(user=self.request.user).get(title__iexact=title) 
+        except Project.DoesNotExist:
+            raise Http404
+        return project
