@@ -6,7 +6,7 @@ from authapp.models import User
 from projectapp.models import Project, Tag
 
 
-class CreateNewProjectTest(BaseProjectWebTest):
+class NewProjectTest(BaseProjectWebTest):
     fixtures = ['users']
 
     def test_view_page(self):

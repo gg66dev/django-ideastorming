@@ -7,7 +7,7 @@ from authapp.models import User
 from projectapp.models import Project, Tag
 
 
-class DisplayListProjectTest(BaseProjectWebTest):
+class MyProjectListTest(BaseProjectWebTest):
     fixtures = ['users', 'projects']
    
     #todo
