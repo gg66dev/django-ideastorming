@@ -1,0 +1,3 @@
+from projectapp.tests.test_common import BaseProjectWebTest
+from projectapp.tests.test_create_new_project import CreateNewProjectTest
+from projectapp.tests.test_display_list_project import DisplayListProjectTest

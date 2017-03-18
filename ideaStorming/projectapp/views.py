@@ -76,6 +76,7 @@ class ProjectListView(ListView):
             project_page = paginator.page(paginator.num_pages)
 
         context['object_list'] = project_page
+        context['page'] = 'my-projects'
         return context
 
 
@@ -93,3 +94,8 @@ class ProjectDetailView(DetailView):
         except Project.DoesNotExist:
             raise Http404
         return project
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDetailView, self).get_context_data(**kwargs)
+        context['page'] = 'my-projects'
+        return context
