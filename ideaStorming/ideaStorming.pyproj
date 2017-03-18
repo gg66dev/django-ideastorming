@@ -100,6 +100,7 @@
     <Content Include="media\templates\pagination.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="media\templates\projectapp\detail_project.html" />
     <Content Include="media\templates\projectapp\index.html" />
     <Content Include="media\templates\projectapp\my_projects.html" />
     <Content Include="media\templates\projectapp\new_project.html" />

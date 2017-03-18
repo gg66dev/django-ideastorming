@@ -97,11 +97,11 @@ class CreateListProjectTest(BaseProjectWebTest):
         page = self.app.get("/my-projects/")
         #Juan see the two projects that he had. (todo: count number of project)
         self.assertContains(page,"Virtual cat shop")
-        self.assertContains(page,"2017-01-10 17:14:03")
+        self.assertContains(page,"2017-01-10")
         self.assertContains(page,"Modern suitcase")
-        self.assertContains(page,"2017-01-13 17:14:03")
+        self.assertContains(page,"2017-01-13")
         self.assertNotContains(page,"App that recommend Restaurants")
-        self.assertNotContains(page,"2017-01-28 17:14:03")
+        self.assertNotContains(page,"2017-01-28")
         #juan logout.
         self.logout();
     
@@ -113,11 +113,11 @@ class CreateListProjectTest(BaseProjectWebTest):
         page = self.app.get("/my-projects/")
         #see just one project that he have.  (todo: count number of project)
         self.assertNotContains(page,"Virtual cat shop")
-        self.assertNotContains(page,"2017-01-10 17:14:03")
+        self.assertNotContains(page,"2017-01-10")
         self.assertNotContains(page,"Modern suitcase")
-        self.assertNotContains(page,"2017-01-13 17:14:03")
+        self.assertNotContains(page,"2017-01-13")
         self.assertContains(page,"App that recommend Restaurants")
-        self.assertContains(page,"2017-01-28 17:14:03")
+        self.assertContains(page,"2017-01-28")
         #pedro logout.
         self.logout();
         
