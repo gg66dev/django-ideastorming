@@ -84,6 +84,8 @@ class UserViewTest(WebTest):
         page.form['password'] = "abcdef"
         page = page.form.submit()
         self.assertRedirects(page,"/register/")
+        #self.assertContains(page,"New user created successfully.")
+        #valid register in database.
         user = User.objects.get(username='pereira2@email.cl')
         self.assertNotEqual(user,None);
         self.assertEqual(user.username,'pereira2@email.cl')

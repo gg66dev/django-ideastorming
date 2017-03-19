@@ -3,6 +3,7 @@ from django.views.generic import FormView
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
 
 from .models import User
 from .forms import UserForm, LoginForm
@@ -38,7 +39,11 @@ class UserRegister(FormView):
     template_name = 'new_user.html'
     form_class = UserForm
     success_url = '/register/'
-
+    
     def form_valid(self, form):
         form.save()
+        messages.success(self.request, 'New user created successfully.')
         return super(UserRegister, self).form_valid(form)
+    
+   
+   

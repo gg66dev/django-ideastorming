@@ -58,6 +58,10 @@ class UserForm(ModelForm):
         email = self.cleaned_data['email']
         if not email:
             raise forms.ValidationError("This field is required.")
+        #check uniqueness of email
+        q = User.objects.filter(email=email)
+        if len(q) > 0:
+            raise forms.ValidationError("This email is already registered")
         return email
 
     def clean(self):

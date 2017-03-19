@@ -51,7 +51,30 @@
     </Compile>
     <Compile Include="projectapp\migrations\__init__.py" />
     <Compile Include="projectapp\models.py" />
-    <Compile Include="projectapp\tests.py" />
+    <Compile Include="projectapp\tests\test_common.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\tests\test_main_page.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\tests\test_detail_project.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\tests\test_edit_project.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\tests\test_my_project_list.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\tests\test_new_project.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\tests\test_search_project.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="projectapp\tests\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="projectapp\urls.py">
       <SubType>Code</SubType>
     </Compile>
@@ -72,6 +95,7 @@
     <Folder Include="projectapp\" />
     <Folder Include="projectapp\migrations\" />
     <Folder Include="projectapp\fixtures\" />
+    <Folder Include="projectapp\tests\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{02205482-39b9-4a1c-b98a-16100d780116}\3.5" />

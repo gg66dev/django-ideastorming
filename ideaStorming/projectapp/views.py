@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.contrib import messages
 
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
@@ -45,6 +46,7 @@ class ProjectNewView(FormView):
 
     def form_valid(self, form):
         form.save()
+        messages.success(self.request, 'New project created successfully.')
         return super(ProjectNewView, self).form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
