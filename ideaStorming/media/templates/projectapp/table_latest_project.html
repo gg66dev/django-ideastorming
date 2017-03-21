@@ -1,0 +1,24 @@
+<div class="text-left">
+    <h3>Top 20 last projects</h3>
+</div>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th class="text-left">Name Project</th>
+            <th class="text-center">User</th>
+            <th class="text-right">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in latest_project_list %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td class="text-left">{{ project.title }}</td>
+                <td class="text-center"> {{ project.user.username }}</td>
+                <td class="text-center">{{ project.date_last_modification|date:"Y-m-d" }}</td>
+            </tr>
+        {% endfor%}
+    </tbody>
+</table>

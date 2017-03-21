@@ -24,7 +24,15 @@ VIEW FROM PROJECT APP
 """
 
 def index(request):
-    return login(request)
+    context = dict()
+    #get 20 most popular project desc (-)
+    most_ranked_project = Project.objects.order_by('-mark')[:20] 
+    context['ranked_project_list'] = most_ranked_project
+    #get 20 latest project desc (-)
+    latest_project = Project.objects.order_by('date_last_modification')[:20]
+    context['latest_project_list'] = latest_project
+
+    return login(request,context)
 
 
 @method_decorator(login_required, name='dispatch')

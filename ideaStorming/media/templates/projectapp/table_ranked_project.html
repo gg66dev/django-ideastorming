@@ -1,0 +1,26 @@
+<div class="text-left">
+    <h3>Top 20 most popular projects</h3>
+</div>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th class="text-left">Name Project</th>
+            <th class="text-center">User</th>
+            <th class="text-center">Date</th>
+            <th class="text-right">Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in ranked_project_list %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td class="text-left">{{ project.title }}</td>
+                <td class="text-center"> {{ project.user.username }}</td>
+                <td class="text-center">{{ project.date_last_modification|date:"Y-m-d" }}</td>
+                <td class="text-right">{{ project.mark }}</td>
+            </tr>
+        {% endfor%}
+    </tbody>
+</table>

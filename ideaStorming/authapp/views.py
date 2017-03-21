@@ -13,7 +13,7 @@ from .forms import UserForm, LoginForm
 VIEW FROM AUTH APP
 """
 
-def login(request):
+def login(request,context):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -22,11 +22,15 @@ def login(request):
             user = authenticate(username=username, password=password)
             django_login(request,user)
             #use user info to display in the view
-            return render(request, 'index.html', { 'page' : 'home'})
+            context['page'] = 'home'
+            return render(request, 'index.html', context)
     else:
         form = LoginForm()
-    return render(request, 'index.html', {'form': form, 'display_login_form':True, 'page' : 'home'})
-    
+
+    context['form'] = form
+    context['display_login_form'] = True
+    context['page'] = 'home'
+    return render(request, 'index.html', context)
 
 def logout(request):
     django_logout(request)

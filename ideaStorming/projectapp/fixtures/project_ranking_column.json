@@ -1,0 +1,434 @@
+[
+
+  {
+    "model": "projectapp.Tag",
+    "pk": 1,
+    "fields": {
+      "tag": "cat"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 2,
+    "fields": {
+      "tag": "animals"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 3,
+    "fields": {
+      "tag": "virtual shops"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 4,
+    "fields": {
+      "tag": "customer"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 5,
+    "fields": {
+      "tag": "travels"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 6,
+    "fields": {
+      "tag": "money"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 7,
+    "fields": {
+      "tag": "entertainment"
+    }
+  },
+  {
+    "model": "projectapp.Tag",
+    "pk": 8,
+    "fields": {
+      "tag": "cars"
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 4,
+    "fields": {
+      "title": "project with mark 1.451",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.451
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 5,
+    "fields": {
+      "title": "project with mark 1.461",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.461
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 6,
+    "fields": {
+      "title": "project with mark 1.471",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.471
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 7,
+    "fields": {
+      "title": "project with mark 1.481",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.481
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 8,
+    "fields": {
+      "title": "project with mark 1.491",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.491
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 9,
+    "fields": {
+      "title": "project with mark 1.501",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.501
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 10,
+    "fields": {
+      "title": "project with mark 1.511",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-03-01 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.511
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 11,
+    "fields": {
+      "title": "project with mark 1.521",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.521
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 12,
+    "fields": {
+      "title": "project with mark 1.531",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.531
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 13,
+    "fields": {
+      "title": "project with mark 1.541",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.541
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 14,
+    "fields": {
+      "title": "project with mark 1.551",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.551
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 15,
+    "fields": {
+      "title": "project with mark 1.561",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.561
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 16,
+    "fields": {
+      "title": "project with mark 1.571",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.571
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 17,
+    "fields": {
+      "title": "project with mark 1.581",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.581
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 18,
+    "fields": {
+      "title": "project with mark 1.991",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.991
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 19,
+    "fields": {
+      "title": "project with mark 3.601",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 3.601
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 20,
+    "fields": {
+      "title": "project with mark 1.611",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.611
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 21,
+    "fields": {
+      "title": "project with mark 1.821",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.821
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 22,
+    "fields": {
+      "title": "project with mark 4.631",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 4.631
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 3,
+    "fields": {
+      "title": "project with mark 1.641",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.641
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 23,
+    "fields": {
+      "title": "project with mark 1.651",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.651
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 24,
+    "fields": {
+      "title": "project with mark 1.661",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-01-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.661
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 25,
+    "fields": {
+      "title": "project with mark 1.671",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-03-11 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.671
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 26,
+    "fields": {
+      "title": "project with mark 1.681",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-03-29 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.681
+    }
+  },
+  {
+    "model": "projectapp.Project",
+    "pk": 27,
+    "fields": {
+      "title": "project with mark 1.691",
+      "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
+      "advantages": "the recommendations will be very accuracy",
+      "investment": "$100 - $300 USD",
+      "date_creation": "2017-01-28 21:14:03.488920+00:00",
+      "date_last_modification": "2017-03-28 21:14:03.488920+00:00",
+      "user": 2,
+      "tags": [ 1, 3, 4, 7 ],
+      "mark": 1.691
+    }
+  }
+]

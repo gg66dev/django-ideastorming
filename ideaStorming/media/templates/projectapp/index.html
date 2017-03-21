@@ -23,70 +23,13 @@
 <br>
 <div class="row">
     <div class="col-md-8">
-        <div class="text-left">
-            <h3>Top 20 most popular projects</h3>
-        </div>
-        <br>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th class="text-left">Name Project</th>
-                    <th class="text-center">User</th>
-                    <th class="text-center">Date</th>
-                    <th class="text-right">Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td class="text-left">Name Project 1</td>
-                    <td class="text-center">user name 1</td>
-                    <td class="text-center">11/01/2012</td>
-                    <td class="text-right">10</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td class="text-left">Name Project 2</td>
-                    <td class="text-center">user name 2</td>
-                    <td class="text-center">11/05/2013</td>
-                    <td class="text-right">8</td>
-                </tr>
-            </tbody>
-        </table>
+        {% include "table_ranked_project.html" %}
     </div>
 </div>
 <br>
 <div class="row">
     <div class="col-md-6">
-        <div class="text-left">
-            <h3>Top 20 last projects</h3>
-        </div>
-        <br>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th class="text-left">Name Project</th>
-                    <th class="text-center">User</th>
-                    <th class="text-right">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td class="text-left">Name Project 3</td>
-                    <td class="text-center">user name 3</td>
-                    <td class="text-right">11/02/2017</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td class="text-left">Name Project 4</td>
-                    <td class="text-center">user name 4</td>
-                    <td class="text-right">08/02/2017</td>
-                </tr>
-            </tbody>
-        </table>
+        {% include "table_latest_project.html" %}
     </div>
 </div>
 {% endblock content %}

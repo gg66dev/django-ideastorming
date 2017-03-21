@@ -24,6 +24,7 @@ class Project(models.Model):
     date_last_modification =  models.DateTimeField(auto_now_add=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
+    mark = models.DecimalField(max_digits=4, decimal_places=3,null=True)
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
