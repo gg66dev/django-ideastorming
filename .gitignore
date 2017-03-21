@@ -1,4 +1,6 @@
 *.swp
+*.sln
+*.pyproj
 
 ;; 2013.01.21
 ;; yasushisakai
