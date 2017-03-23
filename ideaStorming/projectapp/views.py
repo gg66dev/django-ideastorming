@@ -90,6 +90,40 @@ class ProjectListView(ListView):
         return context
 
 
+class ProjectSearchResultsView(ListView):
+    model = Project
+    template_name = 'search_results.html'
+    paginate_by = 15 
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectSearchResultsView, self).get_context_data(**kwargs) 
+        list_project = super(ProjectSearchResultsView, self).get_queryset()
+        search_words = self.request.GET.get('q')        
+        #todo: separete 
+        print(search_words)
+
+        if len(list_project) == 0:
+            context['object_list'] = list_project
+            context['is_paginated'] = False
+            return context
+
+        #use the title of the project like url parameter for the detail page.
+        for project in list_project:
+            project.url_detail = project.title.replace(" ", "_")
+        
+        paginator = Paginator(list_project, self.paginate_by)
+        page = self.request.GET.get('page')
+        try:
+            project_page = paginator.page(page)
+        except PageNotAnInteger:
+            project_page = paginator.page(1)
+        except EmptyPage:
+            project_page = paginator.page(paginator.num_pages)
+
+        context['object_list'] = project_page
+        return context
+
+
 
 @method_decorator(login_required, name='dispatch')
 class ProjectDetailView(DetailView):

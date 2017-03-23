@@ -21,6 +21,10 @@
                 <td class="text-center">{{ project.date_last_modification|date:"Y-m-d" }}</td>
                 <td class="text-right">{{ project.mark }}</td>
             </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4"> Don't exist registered projects =(</td>
+            </tr>
         {% endfor%}
     </tbody>
 </table>
