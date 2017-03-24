@@ -2,9 +2,10 @@
     <form action="{% url 'search' %}" method="get">
         <div id="imaginary_container">
             <div class="input-group stylish-input-group">
-                <input type="text" class="form-control" placeholder="Search by Topic, Name Project, ...etc.">
+                <input type="text" class="form-control" name="q" 
+                       placeholder="Search by Topic, Name Project, Author ...etc.">
                 <span class="input-group-addon">
-                    <button type="submit" name="q">
+                    <button type="submit">
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </span>

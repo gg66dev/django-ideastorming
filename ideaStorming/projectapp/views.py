@@ -14,6 +14,7 @@ from django.core.paginator import PageNotAnInteger
 
 
 from authapp.views import login
+from authapp.forms import LoginForm
 
 from .models import Project
 from .forms import NewProjectForm
@@ -24,6 +25,9 @@ VIEW FROM PROJECT APP
 """
 
 def index(request):
+    """
+    Main Page
+    """
     context = dict()
     #get 20 most popular project desc (-)
     most_ranked_project = Project.objects.order_by('-mark')[:20] 
@@ -37,6 +41,9 @@ def index(request):
 
 @method_decorator(login_required, name='dispatch')
 class ProjectNewView(FormView):
+    """
+    Create new project view
+    """
     model = Project
     template_name = 'new_project.html'
     success_url = '/new-project/'
@@ -57,8 +64,12 @@ class ProjectNewView(FormView):
         messages.success(self.request, 'New project created successfully.')
         return super(ProjectNewView, self).form_valid(form)
 
+
 @method_decorator(login_required, name='dispatch')
 class ProjectListView(ListView):
+    """
+    My projects View
+    """
     model = Project
     template_name = 'my_projects.html'
     paginate_by = 15 
@@ -91,27 +102,54 @@ class ProjectListView(ListView):
 
 
 class ProjectSearchResultsView(ListView):
+    """
+    Search Project View
+    """
     model = Project
     template_name = 'search_results.html'
     paginate_by = 15 
 
+    def find_projects(self,search_words,project_list):
+        words_array = search_words.split()
+        result = list()
+        #search words in project titles
+        for word in words_array:
+            query_set = project_list.filter(title__contains=word)
+            for e in query_set:
+                result.append(e)    
+        #search words in authors
+        for word in words_array:
+            query_set = project_list.filter(user__username__contains=word)
+            for e in query_set:
+                result.append(e)    
+        #search worlds in tags
+        for word in words_array:
+            query_sey = project_list.filter(tags__tag__contains=word)   
+            for e in query_set:
+                result.append(e)
+        #todo: remove duplicate project.
+        return result
+
     def get_context_data(self, **kwargs):
         context = super(ProjectSearchResultsView, self).get_context_data(**kwargs) 
-        list_project = super(ProjectSearchResultsView, self).get_queryset()
+        project_list = super(ProjectSearchResultsView, self).get_queryset()
         search_words = self.request.GET.get('q')        
-        #todo: separete 
-        print(search_words)
+        result_project = self.find_projects(search_words,project_list)
 
-        if len(list_project) == 0:
-            context['object_list'] = list_project
+
+        if len(result_project) == 0:
+            context['object_list'] = result_project
             context['is_paginated'] = False
+            context['display_login_form'] = True
+            context['form'] = LoginForm()
+            context['search_words'] = search_words
             return context
 
         #use the title of the project like url parameter for the detail page.
-        for project in list_project:
+        for project in result_project:
             project.url_detail = project.title.replace(" ", "_")
         
-        paginator = Paginator(list_project, self.paginate_by)
+        paginator = Paginator(result_project, self.paginate_by)
         page = self.request.GET.get('page')
         try:
             project_page = paginator.page(page)
@@ -120,13 +158,17 @@ class ProjectSearchResultsView(ListView):
         except EmptyPage:
             project_page = paginator.page(paginator.num_pages)
 
-        context['object_list'] = project_page
+        context['object_list'] = result_project
+        context['display_login_form'] = True
+        context['form'] = LoginForm()
+        context['search_words'] = search_words 
         return context
 
 
-
-@method_decorator(login_required, name='dispatch')
 class ProjectDetailView(DetailView):
+    """
+    Detail of Project view
+    """
     model = Project
     template_name = 'detail_project.html'
     
