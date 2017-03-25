@@ -16,7 +16,7 @@ from django.core.paginator import PageNotAnInteger
 from authapp.views import login
 from authapp.forms import LoginForm
 
-from .models import Project
+from .models import Project, Comment
 from .forms import NewProjectForm
 
 
@@ -184,4 +184,13 @@ class ProjectDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
         context['page'] = 'my-projects'
+
+        #comments
+        title = self.kwargs['project_title'].replace("_", " ")
+        project = self.model.objects.filter(user=self.request.user).get(title__iexact=title)
+        comment_list = Comment.objects.filter(project=project)
+        context['comment_list'] = comment_list
+        context['num_comments'] = len(comment_list)
+        
+
         return context
