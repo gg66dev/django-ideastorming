@@ -1,3 +1,7 @@
+import humanize
+
+from datetime import datetime
+
 #from django.views.generic.edit import CreateView
 from django.views.generic import FormView
 from django.views.generic.list import ListView
@@ -11,6 +15,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
+
 
 
 from authapp.views import login
@@ -181,6 +186,7 @@ class ProjectDetailView(DetailView):
             raise Http404
         return project
 
+    
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
         context['page'] = 'my-projects'
@@ -189,6 +195,10 @@ class ProjectDetailView(DetailView):
         title = self.kwargs['project_title'].replace("_", " ")
         project = self.model.objects.filter(user=self.request.user).get(title__iexact=title)
         comment_list = Comment.objects.filter(project=project)
+        #process day of the comment
+        for comment in comment_list:
+            comment.day = humanize.naturalday(comment.publication_date)
+
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
         

@@ -7,13 +7,13 @@
             <div class="comments-list">
                 {% for comment in comment_list %}
                 <div class="media">
-                    <h5 class="pull-right"><small>5 days ago</small></h5>
+                    <h5 class="pull-right"><small>{{comment.day}}</small></h5>
                     <div class="media-body">
                         <div>
                             <h4 class="media-heading user_name">{{ comment.user }}</h4>
                             {{ comment.comment }}
                         </div>
-                        <div style="float:left;"><h5 class="pull-right">score: 5/5</h5></div>
+                        <div style="float:left;"><h5 class="pull-right">score: {{comment.score}}/5</h5></div>
                     </div>
 
                 </div>

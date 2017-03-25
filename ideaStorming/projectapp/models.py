@@ -31,3 +31,4 @@ class Comment(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     score  = models.IntegerField()
     comment = models.CharField(max_length=300)
+    publication_date = models.DateField(auto_now_add=True, null=True)
