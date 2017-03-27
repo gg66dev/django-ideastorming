@@ -100,5 +100,38 @@
       "tags": [ 1, 3, 4, 7 ],
       "mark": 1.441
     }
+  },
+  {
+    "model": "projectapp.Comment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "project": 3,
+      "score": 4,
+      "comment":"Este es el primer comentario",
+      "publication_date": "2017-01-24" 
+    }
+  },
+  {
+    "model": "projectapp.Comment",
+    "pk": 1,
+    "fields": {
+      "user": 3,
+      "project": 3,
+      "score": 3,
+      "comment":"Este es el segundo comentario",
+      "publication_date": "2017-02-24" 
+    }
+  },
+  {
+    "model": "projectapp.Comment",
+    "pk": 1,
+    "fields": {
+      "user": 4,
+      "project": 3,
+      "score": 1,
+      "comment":"Este es el tercer comentario",
+      "publication_date": "2017-03-24" 
+    }
   }
 ]

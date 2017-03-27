@@ -36,6 +36,44 @@
       "company": "The other Company S.A.",
       "country": "Canada"
     }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "username": "user3@email.cl",
+      "password": "pbkdf2_sha256$30000$XDu6G7wP020h$2rI248mSMadrob/uceP8n0wBdOVlDMmBKUGQkirLbZQ=",
+      "first_name": "user",
+      "last_name": "tres",
+      "email": "peperez@email.cl"
+    }
+  },
+  {
+    "model": "authapp.User",
+    "pk": 3,
+    "fields": {
+      "company": "The other Company S.A.",
+      "country": "Canada"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "username": "user4@email.cl",
+      "password": "pbkdf2_sha256$30000$XDu6G7wP020h$2rI248mSMadrob/uceP8n0wBdOVlDMmBKUGQkirLbZQ=",
+      "first_name": "user",
+      "last_name": "cuatro",
+      "email": "peperez@email.cl"
+    }
+  },
+  {
+    "model": "authapp.User",
+    "pk": 4,
+    "fields": {
+      "company": "The other Company S.A.",
+      "country": "Canada"
+    }
   }
   
 ]

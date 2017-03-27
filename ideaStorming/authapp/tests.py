@@ -112,38 +112,39 @@ class LogInLogOutTest(WebTest):
 
     def test_view_page(self):
         page = self.app.get("/")
-        self.assertEqual(len(page.forms),1)
-    
+        self.assertEqual(len(page.forms),3) #login, search and ???
+     
     def test_login_success(self):
         page = self.app.get("/")
-        page.form['email'] = "prueba@email.cl"
-        page.form['password'] = "abcd"
-        page = page.form.submit()
+        form = page.forms['login_form']
+        form['email'] = "prueba@email.cl"
+        form['password'] = "abcd"
+        page = form.submit()
         #redirecct to page with user info
         self.assertContains(page,"Hello, Juan Perez.")
 
     @skip('no required send form for the validation of empty fields')
     def test_login_blank_data(self):
         page = self.app.get("/")
-        page.form['email'] = ""
-        page.form['password'] = ""
-        page = page.form.submit()
+        page.forms['login_form']['email'] = ""
+        page.forms['login_form']['password'] = ""
+        page = page.forms['login_form'].submit()
         #redirect to page with error message
         self.assertContains(page,"This field is required.")
     
     def test_login_wrong_username(self):
         page = self.app.get("/")
-        page.form['email'] = "prueba666@email.cl"
-        page.form['password'] = "1234"
-        page = page.form.submit()
+        page.forms['login_form']['email'] = "prueba666@email.cl"
+        page.forms['login_form']['password'] = "1234"
+        page = page.forms['login_form'].submit()
         #redirect to page with error message
         self.assertContains(page,"You entered an incorrect username or password")
 
     def test_login_wrong_password(self):
         page = self.app.get("/")
-        page.form['email'] = "prueba@email.cl"
-        page.form['password'] = "12345678"
-        page = page.form.submit()
+        page.forms['login_form']['email'] = "prueba@email.cl"
+        page.forms['login_form']['password'] = "12345678"
+        page = page.forms['login_form'].submit()
         #redirect to page with error message
         self.assertContains(page,"You entered an incorrect username or password")
 
