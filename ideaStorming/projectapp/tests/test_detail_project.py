@@ -9,11 +9,10 @@ class DetailProjectTest(BaseProjectWebTest):
     ##################
 
     def test_display_project_comments(self):
-        pass
-        #page = self.app.get("/detail-project/App_that_recommend_Restaurants/")
-        #self.assertContains(page,"Este es el primer comentario")
-        #self.assertContains(page,"Este es el segundo comentario")
-        #self.assertContains(page,"Este es el tercer comentario")
+        page = self.app.get("/detail-project/App_that_recommend_Restaurants/")
+        self.assertContains(page,"Este es el primer comentario")
+        self.assertContains(page,"Este es el segundo comentario")
+        self.assertContains(page,"Este es el tercer comentario")
 
     def test_user_add_comment(self):
         pass

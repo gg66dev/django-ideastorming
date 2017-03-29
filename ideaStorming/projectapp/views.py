@@ -181,7 +181,9 @@ class ProjectDetailView(DetailView):
     def get_object(self):
         title = self.kwargs['project_title'].replace("_", " ")
         try:
-            project = self.model.objects.filter(user=self.request.user).get(title__iexact=title) 
+            #problem: Enter to detail project from search or top 20 columns.
+            #project = self.model.objects.filter(user=self.request.user).get(title__iexact=title) 
+            project = self.model.objects.get(title__iexact=title)
         except Project.DoesNotExist:
             raise Http404
         return project
@@ -193,7 +195,8 @@ class ProjectDetailView(DetailView):
 
         #comments
         title = self.kwargs['project_title'].replace("_", " ")
-        project = self.model.objects.filter(user=self.request.user).get(title__iexact=title)
+        #project = self.model.objects.filter(user=self.request.user).get(title__iexact=title)
+        project = self.model.objects.get(title__iexact=title)
         comment_list = Comment.objects.filter(project=project)
         #process day of the comment
         for comment in comment_list:
