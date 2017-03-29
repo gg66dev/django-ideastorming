@@ -22,7 +22,7 @@ from authapp.views import login
 from authapp.forms import LoginForm
 
 from .models import Project, Comment
-from .forms import NewProjectForm
+from .forms import NewProjectForm, NewCommentForm
 
 
 """
@@ -204,6 +204,6 @@ class ProjectDetailView(DetailView):
 
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
-        
+        context['new_comment_form'] = NewCommentForm()
 
         return context

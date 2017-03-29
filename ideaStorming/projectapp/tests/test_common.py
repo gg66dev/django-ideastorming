@@ -11,13 +11,13 @@ class BaseProjectWebTest(WebTest):
     def loginPedro(self):
         page = self.app.get("/")
         page.forms['login_form']['email'] = "pepereria@email.cl"
-        page.forms['login_form']['password'] = "perez"
+        page.forms['login_form']['password'] = "abcd"
         page = page.forms['login_form'].submit()
        
     def loginUser3(self):
         page = self.app.get("/")
         page.forms['login_form']['email'] = "user3@email.cl"
-        page.forms['login_form']['password'] = "perez"
+        page.forms['login_form']['password'] = "abcd"
         page = page.forms['login_form'].submit()
        
     def logout(self):

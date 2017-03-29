@@ -17,7 +17,12 @@
     <p>Tags : {{ object.tags }} </p>
 </div> 
 
-{% include "comments.html" %}
+<div class="container">
+    {% include "comments.html" %}
+</div>
+<div class="container">
+    {% include "new_comment.html" %}
+</div>
 
 {% endblock content %}
 

@@ -1,27 +1,19 @@
-{% extends "base.html" %}
-
-{% load widget_tweaks %}
-{% block content %}
+﻿{% load widget_tweaks %}
 <div>
-    <h3>My New Project</h3>
+    <h3>Add a comment</h3>
     <br>
 </div>
-{% if form.non_field_errors %}
+{% if new_comment_form.non_field_errors %}
     <div class="alert alert-danger text-left">
-        {{ form.non_field_errors }}
+        {{ new_comment_form.non_field_errors }}
     </div>
 {% endif %}
-{% for message in messages %}
-    <div class="alert alert-success">
-        <strong>{{ message }}</strong>
-    </div>
-{% endfor %}
-<form action="{% new_comment %}" method="post">
+<form id="{% url 'new_commment' %}" action="" method="post">
     {% csrf_token %}
-    {% for field in form %}
+    {% for field in new_comment_form %}
     <div class="form-group row">
         <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label text-left">{{ field.label }}</label>
-        <div class="col-sm-4">  
+        <div class="col-sm-4">
             {% render_field field class+="form-control" %}
             {% if field.errors %}
             <div class="alert alert-danger text-left">
@@ -31,7 +23,5 @@
         </div>
     </div>
     {% endfor %}
-    <button id="save-btn" type="submit" class="btn btn-default text-left">Save</button>
+    <button id="save-btn" type="submit" class="btn btn-default text-left">Add comment</button>
 </form>
-{% endblock content %}
-

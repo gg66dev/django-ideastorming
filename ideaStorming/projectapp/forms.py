@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 
 from authapp.models import User
-from .models import Project, Tag
+from .models import Project, Tag, Comment
 
 class NewProjectForm(ModelForm):
     tags = forms.CharField(required=False, max_length= 200)
@@ -43,3 +43,10 @@ class NewProjectForm(ModelForm):
             project_instance.tags.add(tag_instance)        
         
         return project_instance
+
+
+
+class NewCommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ( 'comment', 'score')
