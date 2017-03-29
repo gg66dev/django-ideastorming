@@ -14,7 +14,13 @@ class BaseProjectWebTest(WebTest):
         page.forms['login_form']['password'] = "perez"
         page = page.forms['login_form'].submit()
        
+    def loginUser3(self):
+        page = self.app.get("/")
+        page.forms['login_form']['email'] = "user3@email.cl"
+        page.forms['login_form']['password'] = "perez"
+        page = page.forms['login_form'].submit()
+       
     def logout(self):
-       self.app.get("/logout/");     
+        self.app.get("/logout/");     
 
 

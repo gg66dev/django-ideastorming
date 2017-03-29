@@ -23,8 +23,8 @@
     "pk": 2,
     "fields": {
       "username": "pepereria@email.cl",
-      "password": "pbkdf2_sha256$30000$XDu6G7wP020h$2rI248mSMadrob/uceP8n0wBdOVlDMmBKUGQkirLbZQ=",
-      "first_name": "Pepe",
+      "password": "pbkdf2_sha256$30000$sIJRxPDvtciA$Pqc9rmC+wH8AzXUpw8Zvx0LECqrmIf7CLASzw9s0jwE=",
+      "first_name": "Pedro",
       "last_name": "Perez",
       "email": "peperez@email.cl"
     }
@@ -42,7 +42,7 @@
     "pk": 3,
     "fields": {
       "username": "user3@email.cl",
-      "password": "pbkdf2_sha256$30000$XDu6G7wP020h$2rI248mSMadrob/uceP8n0wBdOVlDMmBKUGQkirLbZQ=",
+      "password": "pbkdf2_sha256$30000$sIJRxPDvtciA$Pqc9rmC+wH8AzXUpw8Zvx0LECqrmIf7CLASzw9s0jwE=",
       "first_name": "user",
       "last_name": "tres",
       "email": "peperez@email.cl"
@@ -70,6 +70,25 @@
   {
     "model": "authapp.User",
     "pk": 4,
+    "fields": {
+      "company": "The other Company S.A.",
+      "country": "Canada"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "username": "user5@email.cl",
+      "password": "pbkdf2_sha256$30000$XDu6G7wP020h$2rI248mSMadrob/uceP8n0wBdOVlDMmBKUGQkirLbZQ=",
+      "first_name": "user",
+      "last_name": "cinco",
+      "email": "peperez@email.cl"
+    }
+  },
+  {
+    "model": "authapp.User",
+    "pk": 5,
     "fields": {
       "company": "The other Company S.A.",
       "country": "Canada"
