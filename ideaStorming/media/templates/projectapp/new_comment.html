@@ -8,20 +8,28 @@
         {{ new_comment_form.non_field_errors }}
     </div>
 {% endif %}
-<form id="{% url 'new_commment' %}" action="" method="post">
+<form id="new_comment" action="" method="post">
     {% csrf_token %}
-    {% for field in new_comment_form %}
     <div class="form-group row">
-        <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label text-left">{{ field.label }}</label>
+        <input name="{{ new_comment_form.project_title.name }}" type="hidden" value="{{ object.title }}" />
+        <label for="{{ new_comment_form.comment.id_for_label }}" class="col-sm-2 col-form-label text-left">{{ new_comment_form.comment.label }}</label>
         <div class="col-sm-4">
-            {% render_field field class+="form-control" %}
-            {% if field.errors %}
+            {% render_field new_comment_form.comment class+="form-control" %}
+            {% if new_comment_form.comment.errors %}
             <div class="alert alert-danger text-left">
-                {{ field.errors }}
+                {{ new_comment_form.comment.errors }}
+            </div>
+            {% endif %}
+        </div>
+        <label for="{{ new_comment_form.score.id_for_label }}" class="col-sm-2 col-form-label text-left">{{ new_comment_form.score.label }}</label>
+        <div class="col-sm-4">
+            {% render_field new_comment_form.score class+="form-control" %}
+            {% if new_comment_form.score.errors %}
+            <div class="alert alert-danger text-left">
+                {{ new_comment_form.score.errors }}
             </div>
             {% endif %}
         </div>
     </div>
-    {% endfor %}
     <button id="save-btn" type="submit" class="btn btn-default text-left">Add comment</button>
 </form>

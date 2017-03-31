@@ -47,6 +47,33 @@ class NewProjectForm(ModelForm):
 
 
 class NewCommentForm(ModelForm):
+    project_title = forms.CharField(required=True, max_length= 200)
+
     class Meta:
         model = Comment
-        fields = ( 'comment', 'score')
+        fields = ( 'project_title', 'comment', 'score')
+
+
+    def __init__(self, user, *args, **kwargs):
+        app_user = User.objects.get(username=user.username)
+        self.app_user = app_user
+        super(NewCommentForm, self).__init__(*args, **kwargs)
+    
+    def clean_project_title(self):
+        project_title = self.cleaned_data['project_title']
+        if not project_title:
+            raise forms.ValidationError("This field is required.")
+        return project_title
+
+    def save(self, commit=True):
+        """
+        desc: get project by title and set value in comment instance.
+        """
+        comment_instance = super(NewCommentForm, self).save(commit=False)
+        project_title = self.cleaned_data['project_title']
+        project = Project.objects.get(title=project_title)
+        comment_instance.project = project 
+        comment_instance.user = self.app_user
+        if commit:
+            comment_instance.save()
+        return comment_instance

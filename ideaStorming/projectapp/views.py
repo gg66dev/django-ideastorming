@@ -6,11 +6,13 @@ from datetime import datetime
 from django.views.generic import FormView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import FormMixin
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.contrib import messages
+from django.urls import reverse
 
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
@@ -23,6 +25,7 @@ from authapp.forms import LoginForm
 
 from .models import Project, Comment
 from .forms import NewProjectForm, NewCommentForm
+from django.http.response import HttpResponseForbidden
 
 
 """
@@ -170,13 +173,22 @@ class ProjectSearchResultsView(ListView):
         return context
 
 
-class ProjectDetailView(DetailView):
+class ProjectDetailView(FormMixin,DetailView):
     """
     Detail of Project view
     """
     model = Project
     template_name = 'detail_project.html'
-    
+    form_class = NewCommentForm
+
+    def get_form_kwargs(self, **kwargs):
+        form_kwargs = super(ProjectDetailView, self).get_form_kwargs(**kwargs)
+        form_kwargs["user"] = self.request.user
+        return form_kwargs
+
+    def get_success_url(self):
+        return reverse('detail-project', kwargs={'project_title': self.object.title.replace(" ", "_")})
+
     #get the object with the title pass in the url
     def get_object(self):
         title = self.kwargs['project_title'].replace("_", " ")
@@ -204,6 +216,21 @@ class ProjectDetailView(DetailView):
 
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
-        context['new_comment_form'] = NewCommentForm()
+        context['new_comment_form'] = self.get_form()
 
         return context
+
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'Thanks for you comment.')
+        return super(ProjectDetailView, self).form_valid(form)

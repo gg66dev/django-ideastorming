@@ -62,3 +62,6 @@ class NewProjectTest(BaseProjectWebTest):
     * check project with already exist name
     * ...
     """
+
+    #todo: test form separately
+
