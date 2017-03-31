@@ -216,9 +216,19 @@ class ProjectDetailView(FormMixin,DetailView):
 
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
-        context['new_comment_form'] = self.get_form()
-
+        # display form if:
+        #   * user is log in
+        #   * the user dont have a comment in the project. 
+        #   * the user is not the project owner
+        if self.request.user.is_authenticated\
+                and not self.is_second_comment(self.request.user,project)\
+                and project.user.username != self.request.user.username:
+            context['new_comment_form'] = self.get_form()
         return context
+
+    def is_second_comment(self,user,project):
+        q = Comment.objects.filter(project=project).filter(user=user)
+        return len(q) > 0
 
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:

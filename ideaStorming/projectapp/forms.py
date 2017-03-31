@@ -55,8 +55,11 @@ class NewCommentForm(ModelForm):
 
 
     def __init__(self, user, *args, **kwargs):
-        app_user = User.objects.get(username=user.username)
-        self.app_user = app_user
+        try:
+            app_user = User.objects.get(username=user.username)
+            self.app_user = app_user
+        except:
+            self.app_user = None
         super(NewCommentForm, self).__init__(*args, **kwargs)
     
     def clean_project_title(self):

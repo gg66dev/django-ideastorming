@@ -19,19 +19,14 @@ class DetailProjectTest(BaseProjectWebTest):
         self.assertContains(page,"Este es el segundo comentario")   #user3
         self.assertContains(page,"Este es el tercer comentario")    #user4
 
-    @skip("Don't want to test")
     def test_dont_display_new_comment_form_to_unlogged_user(self):
         page = self.app.get("/detail-project/App_that_recommend_Restaurants/")
         self.assertNotContains(page,"id=\"new_comment\"")
 
-    @skip("Don't want to test")
     def test_display_new_comment_form_to_logged_user(self):
         self.loginJuan()
         page = self.app.get("/detail-project/App_that_recommend_Restaurants/")
         self.assertContains(page,"id=\"new_comment\"")
-
-    def test_user_add_empty_comment(self):
-        pass
 
     def test_user_add_new_comment(self):
         self.loginJuan()
@@ -50,7 +45,6 @@ class DetailProjectTest(BaseProjectWebTest):
         page = self.app.get("/detail-project/App_that_recommend_Restaurants/")
         self.assertContains(page,"Este es el tercer comentario.")
 
-    @skip("Don't want to test")
     #pedro add comment to own project.
     def test_user_cant_add_comment_own_project(self):
         #dont display new comment form
@@ -58,7 +52,6 @@ class DetailProjectTest(BaseProjectWebTest):
         page = self.app.get("/detail-project/App_that_recommend_Restaurants/")
         self.assertNotContains(page,"id=\"new_comment\"")
 
-    @skip("Don't want to test")
     #user3 (already have one comment in project) want to add new comment.
     def test_user_cant_add_second_comment(self):
         #dont display new comment form
@@ -66,8 +59,10 @@ class DetailProjectTest(BaseProjectWebTest):
         page = self.app.get("/detail-project/App_that_recommend_Restaurants/")
         self.assertNotContains(page,"id=\"new_comment\"")
 
+    def test_user_add_empty_comment(self):
+        pass
 
-@skip("Don't want to test")
+
 class AddCommentFormTest(TestCase):
     fixtures = ['users','projects']
 
