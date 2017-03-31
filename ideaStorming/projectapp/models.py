@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 from authapp.models import User
 
@@ -29,6 +30,6 @@ class Project(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    score  = models.IntegerField()
-    comment = models.CharField(max_length=300)
+    score  = models.IntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
+    comment = models.TextField()
     publication_date = models.DateField(auto_now_add=True, null=True)
