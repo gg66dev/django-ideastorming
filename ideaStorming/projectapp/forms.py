@@ -1,16 +1,28 @@
 from django import forms
 from django.forms import ModelForm
+from django.utils.safestring import mark_safe
 
 from authapp.models import User
 from .models import Project, Tag, Comment
 
+class TagListWidget(forms.TextInput):
+    def render(self, name, value, attrs=None):
+        output = []
+        output.append(u'<div id="tag_container"></div>')
+        output.append(super(TagListWidget, self).render(name, value, attrs))
+        return mark_safe(u''.join(output))
+
+
 class NewProjectForm(ModelForm):
-    tags = forms.CharField(required=False, max_length= 200)
-    
     class Meta:
         model = Project
         fields = ( 'title', 'summary', 'advantages','investment','tags' )
+    class Media:
+        js = {'js/taglist-widget.js'}
 
+    
+    tags = forms.CharField(widget=TagListWidget())
+    
     def __init__(self, user, *args, **kwargs):
         app_user = User.objects.get(username=user.username)
         self.app_user = app_user
