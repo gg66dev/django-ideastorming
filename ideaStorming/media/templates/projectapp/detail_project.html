@@ -14,7 +14,7 @@
     <p>Investment: {{ object.investment }}</p>
     <p>Date creation : {{ object.date_creation }} </p>
     <p>Date last modification :{{ object.date_last_modification }} </p>
-    <p>Tags : {{ object.tags }} </p>
+    <p>Tags : {% for tag in object.tags.all %}{{ tag }} {% endfor %} </p>
 </div> 
 
 <div class="container">

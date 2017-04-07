@@ -6,6 +6,8 @@ from authapp.models import User
 class Tag(models.Model):
     tag = models.CharField(max_length=30)
    
+    def __str__(self):
+        return self.tag
 
 class Project(models.Model):
     INVESTMENT_OPTIONS = (
