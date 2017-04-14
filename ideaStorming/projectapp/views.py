@@ -210,8 +210,7 @@ class ProjectDetailView(FormMixin,DetailView):
     
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
-        context['page'] = 'my-projects'
-
+       
         #comments
         title = self.kwargs['project_title'].replace("_", " ")
         #project = self.model.objects.filter(user=self.request.user).get(title__iexact=title)
