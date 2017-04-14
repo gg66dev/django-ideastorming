@@ -10,6 +10,7 @@
             <th class="text-center">User</th>
             <th class="text-center">Date</th>
             <th class="text-right">Score</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,12 @@
                 <td class="text-center"> {{ project.user.username }}</td>
                 <td class="text-center">{{ project.date_last_modification|date:"Y-m-d" }}</td>
                 <td class="text-right">{{ project.mark }}</td>
+                <td>
+                    <a class="btn btn-default"
+                       href="{% url 'detail-project' project_title=project.url_detail %}"
+                       role="button"
+                       style="padding: 14px 14px;font-size: 12px;">View Detail</a>
+                </td>
             </tr>
             {% empty %}
             <tr>

@@ -38,10 +38,17 @@ def index(request):
     """
     context = dict()
     #get 20 most popular project desc (-)
-    most_ranked_project = Project.objects.order_by('-mark')[:20] 
+    most_ranked_project = Project.objects.order_by('-mark')[:20]
+    #use the title of the project like url parameter for the detail page.
+    for project in most_ranked_project:
+        project.url_detail = project.title.replace(" ", "_")
     context['ranked_project_list'] = most_ranked_project
+    
     #get 20 latest project desc (-)
     latest_project = Project.objects.order_by('date_last_modification')[:20]
+    #use the title of the project like url parameter for the detail page.
+    for project in latest_project:
+        project.url_detail = project.title.replace(" ", "_")
     context['latest_project_list'] = latest_project
 
     return login(request,context)
