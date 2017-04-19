@@ -17,6 +17,11 @@
     <p>Tags : {% for tag in object.tags.all %}{{ tag }} {% endfor %} </p>
 </div> 
 
+{% for message in messages %}
+    <div class="alert alert-success">
+        <strong>{{ message }}</strong>
+    </div>
+{% endfor %}
 <div class="container">
     {% include "comments.html" %}
 </div>

@@ -6,17 +6,16 @@
         <h2>Welcome to idea Storming</h2>
     </div>
 </div>
-<div class="row">
-    {% include "search_bar.html" %}
-</div>
-<br>
-<div class="row">
-    <div class="col-md-8">
-        {% include "table_ranked_project.html" %}
+<div class="row" style="padding: 20px 0 10px 0;">
+    <div class="col-md-12">
+        {% include "search_bar.html" %}
     </div>
 </div>
 <br>
-<div class="row">
+<div class="row" style="padding: 10px 0 20px 0;">
+    <div class="col-md-6">
+        {% include "table_ranked_project.html" %}
+    </div>
     <div class="col-md-6">
         {% include "table_latest_project.html" %}
     </div>

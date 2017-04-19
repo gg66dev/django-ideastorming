@@ -1,41 +1,47 @@
 ﻿{% load widget_tweaks %}
 {% if new_comment_form %}
-    <div>
-        <h3>Add a comment</h3>
-        <br>
-    </div>
-    {% if new_comment_form.non_field_errors %}
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <h3>Add a comment</h3>
+            <br>
+        </div>
+        {% if new_comment_form.non_field_errors %}
         <div class="alert alert-danger text-left">
             {{ new_comment_form.non_field_errors }}
         </div>
-    {% endif %}
-    <form id="new_comment" action="" method="post">
-    {% csrf_token %}
-    <div class="form-group row">
-        <input name="{{ new_comment_form.project_title.name }}" type="hidden" value="{{ object.title }}" />
-        <div class="row">
-            <label for="{{ new_comment_form.comment.id_for_label }}" class="col-sm-2 col-form-label text-left">{{ new_comment_form.comment.label }}</label>
-            <div class="col-sm-4">
-                {% render_field new_comment_form.comment class+="form-control" %}
-                {% if new_comment_form.comment.errors %}
-                <div class="alert alert-danger text-left">
-                    {{ new_comment_form.comment.errors }}
+        {% endif %}
+        <form id="new_comment" action="" method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="form-group">
+                <input name="{{ new_comment_form.project_title.name }}" type="hidden" value="{{ object.title }}" />
+                <label for="{{ new_comment_form.comment.id_for_label }}" class="col-sm-2 control-label">{{ new_comment_form.comment.label }}</label>
+                <div class="col-sm-8">
+                    {% render_field new_comment_form.comment class+="form-control" %}
+                    {% if new_comment_form.comment.errors %}
+                    <div class="alert alert-danger text-left">
+                        {{ new_comment_form.comment.errors }}
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
-        </div>
-        <div class="row">
-            <label for="{{ new_comment_form.score.id_for_label }}" class="col-sm-2 col-form-label text-left">{{ new_comment_form.score.label }}</label>
-            <div class="col-sm-4">
-                {% render_field new_comment_form.score class+="form-control" %}
-                {% if new_comment_form.score.errors %}
-                <div class="alert alert-danger text-left">
-                    {{ new_comment_form.score.errors }}
+            <div class="form-group">
+                <label for="{{ new_comment_form.score.id_for_label }}" class="col-sm-2 control-label">{{ new_comment_form.score.label }}</label>
+                <div class="col-sm-8">
+                    {% render_field new_comment_form.score class+="form-control" %}
+                    {% if new_comment_form.score.errors %}
+                    <div class="alert alert-danger text-left">
+                        {{ new_comment_form.score.errors }}
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
-        </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button id="save-btn" type="submit" class="btn btn-default text-left">Add comment</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <button id="save-btn" type="submit" class="btn btn-default text-left">Add comment</button>
-</form>
+</div>
 {% endif %}

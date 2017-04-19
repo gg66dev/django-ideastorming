@@ -8,9 +8,10 @@ from .models import Project, Tag, Comment
 class TagListWidget(forms.TextInput):
     def render(self, name, value, attrs=None):
         output = []
-        output.append(u'<div id="tag_container"></div>')
+        output.append(u'<div id="tag_container" class="input textarea clearfix custom stackoverflow"></div>')
         output.append(super(TagListWidget, self).render(name, value, attrs))
         return mark_safe(u''.join(output))
+
 
 
 class NewProjectForm(ModelForm):
