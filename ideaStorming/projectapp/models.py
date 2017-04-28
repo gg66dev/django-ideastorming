@@ -32,6 +32,12 @@ class Project(models.Model):
     def __str__(self):
         return '%s' % self.title
 
+    def get_url(self):
+        url_title = self.title.replace(" ", "_").replace(".", "").replace(",", "")
+        url_user = self.user.username.split('@')[0]
+        return '%s/%s/%s'% (url_title,str(self.id),url_user)
+     
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)

@@ -37,7 +37,8 @@ def get_ranked_project_list():
     most_ranked_project = Project.objects.order_by('-mark')[:20]
     #use the title of the project like url parameter for the detail page.
     for project in most_ranked_project:
-        project.url_detail = project.title.replace(" ", "_").replace(".", "").replace(",", "")
+        project.url_detail = project.title.replace(" ","_")
+        project.partial_username = project.user.username.split("@")[0]
     return most_ranked_project
 
 def get_latest_project_list():
@@ -45,7 +46,8 @@ def get_latest_project_list():
     latest_project = Project.objects.order_by('date_last_modification')[:20]
     #use the title of the project like url parameter for the detail page.
     for project in latest_project:
-        project.url_detail = project.title.replace(" ", "_").replace(".", "").replace(",", "")
+        project.url_detail = project.title.replace(" ","_")
+        project.partial_username = project.user.username.split("@")[0]
     return latest_project
 
 def main(request):
@@ -104,7 +106,8 @@ class ProjectListView(ListView):
 
         #use the title of the project like url parameter for the detail page.
         for project in list_project:
-            project.url_detail = project.title.replace(" ", "_")
+            project.url_detail = project.title.replace(" ","_")
+            project.partial_username = project.user.username.split("@")[0]
         
         paginator = Paginator(list_project, self.paginate_by)
         page = self.request.GET.get('page')
@@ -166,7 +169,8 @@ class ProjectSearchResultsView(ListView):
 
         #use the title of the project like url parameter for the detail page.
         for project in result_project:
-            project.url_detail = project.title.replace(" ", "_")
+            project.url_detail = project.title.replace(" ","_")
+            project.partial_username = project.user.username.split("@")[0]
         
         paginator = Paginator(result_project, self.paginate_by)
         page = self.request.GET.get('page')
@@ -198,27 +202,30 @@ class ProjectDetailView(FormMixin,DetailView):
         return form_kwargs
 
     def get_success_url(self):
-        return reverse('detail-project', kwargs={'project_title': self.object.title.replace(" ", "_")})
+        return reverse('detail-project', \
+            kwargs={'project_title': self.object.title.replace(" ","_"),\
+                    'user_id': self.object.user.id,\
+                    'partial_username': self.object.user.username.split("@")[0]})
 
     #get the object with the title pass in the url
     def get_object(self):
-        title = self.kwargs['project_title'].replace("_", " ")
         try:
-            #problem: Enter to detail project from search or top 20 columns.
-            #project = self.model.objects.filter(user=self.request.user).get(title__iexact=title) 
-            project = self.model.objects.get(title__iexact=title)
+            project_title = self.kwargs['project_title'].replace('_',' ')
+            user_id = self.kwargs['user_id']
+            partial_username = self.kwargs['partial_username']
+            q = self.model.objects.filter(title__iexact=project_title).filter(user__username__icontains=partial_username)
+            if(len(q) < 1):
+                raise Http404
+            return q[0]
         except Project.DoesNotExist:
             raise Http404
-        return project
+        
 
     
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
-       
-        #comments
-        title = self.kwargs['project_title'].replace("_", " ")
-        #project = self.model.objects.filter(user=self.request.user).get(title__iexact=title)
-        project = self.model.objects.get(title__iexact=title)
+        
+        project = self.get_object()
         comment_list = Comment.objects.filter(project=project)
         #process day of the comment
         for comment in comment_list:

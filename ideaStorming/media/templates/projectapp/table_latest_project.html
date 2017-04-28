@@ -21,7 +21,7 @@
             <td class="text-center">{{ project.date_last_modification|date:"Y-m-d" }}</td>
             <td>
                 <a class="btn btn-default"
-                   href="{% url 'detail-project' project_title=project.url_detail %}"
+                   href="{% url 'detail-project' project_title=project.url_detail user_id=project.user.id partial_username=project.partial_username %}"
                    role="button"
                    style="padding: 14px 14px;font-size: 12px;">View Detail</a>
             </td>

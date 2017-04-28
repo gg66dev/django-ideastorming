@@ -27,7 +27,9 @@
                 <td class="text-center">{{ projects.date_creation|date:"Y-m-d" }}</td>
                 <td class="text-center">{{ projects.date_last_modification|date:"Y-m-d" }}</td>
                 <td>
-                    <a class="btn btn-default" href="{% url 'detail-project' project_title=projects.url_detail %}" role="button" style="padding: 14px 14px;font-size: 12px;">View Detail</a>
+                    <a class="btn btn-default"
+                       href="{% url 'detail-project' project_title=projects.url_detail user_id=projects.user.id partial_username=projects.partial_username %}" 
+                       role="button" style="padding: 14px 14px;font-size: 12px;">View Detail</a>
                 </td>
                 {% empty %}
                 <td colspan="4"> No Project is found. =(</td>

@@ -26,7 +26,7 @@
                 <td>
                     <a 
                        class="btn btn-default" 
-                       href="{% url 'detail-project' project_title=projects.url_detail %}" 
+                       href="{% url 'detail-project' project_title=projects.url_detail user_id=projects.user.id partial_username=projects.partial_username %}" 
                        role="button" 
                        style="padding: 14px 14px;font-size: 12px;">View Detail</a>
                 </td>
