@@ -60,7 +60,7 @@
     "model": "projectapp.Project",
     "pk": 4,
     "fields": {
-      "title": "project with mark 1.451",
+      "title": "project with mark 1451",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -75,7 +75,7 @@
     "model": "projectapp.Project",
     "pk": 5,
     "fields": {
-      "title": "project with mark 1.461",
+      "title": "project with mark 1461",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -90,7 +90,7 @@
     "model": "projectapp.Project",
     "pk": 6,
     "fields": {
-      "title": "project with mark 1.471",
+      "title": "project with mark 1471",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -105,7 +105,7 @@
     "model": "projectapp.Project",
     "pk": 7,
     "fields": {
-      "title": "project with mark 1.481",
+      "title": "project with mark 1481",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -120,7 +120,7 @@
     "model": "projectapp.Project",
     "pk": 8,
     "fields": {
-      "title": "project with mark 1.491",
+      "title": "project with mark 1491",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -135,7 +135,7 @@
     "model": "projectapp.Project",
     "pk": 9,
     "fields": {
-      "title": "project with mark 1.501",
+      "title": "project with mark 1501",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -150,7 +150,7 @@
     "model": "projectapp.Project",
     "pk": 10,
     "fields": {
-      "title": "project with mark 1.511",
+      "title": "project with mark 1511",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -180,7 +180,7 @@
     "model": "projectapp.Project",
     "pk": 12,
     "fields": {
-      "title": "project with mark 1.531",
+      "title": "project with mark 1531",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -195,7 +195,7 @@
     "model": "projectapp.Project",
     "pk": 13,
     "fields": {
-      "title": "project with mark 1.541",
+      "title": "project with mark 1541",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -210,7 +210,7 @@
     "model": "projectapp.Project",
     "pk": 14,
     "fields": {
-      "title": "project with mark 1.551",
+      "title": "project with mark 1551",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -225,7 +225,7 @@
     "model": "projectapp.Project",
     "pk": 15,
     "fields": {
-      "title": "project with mark 1.561",
+      "title": "project with mark 1561",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -240,7 +240,7 @@
     "model": "projectapp.Project",
     "pk": 16,
     "fields": {
-      "title": "project with mark 1.571",
+      "title": "project with mark 1571",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -255,7 +255,7 @@
     "model": "projectapp.Project",
     "pk": 17,
     "fields": {
-      "title": "project with mark 1.581",
+      "title": "project with mark 1581",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -270,7 +270,7 @@
     "model": "projectapp.Project",
     "pk": 18,
     "fields": {
-      "title": "project with mark 1.991",
+      "title": "project with mark 1991",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -285,7 +285,7 @@
     "model": "projectapp.Project",
     "pk": 19,
     "fields": {
-      "title": "project with mark 3.601",
+      "title": "project with mark 3601",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -300,7 +300,7 @@
     "model": "projectapp.Project",
     "pk": 20,
     "fields": {
-      "title": "project with mark 1.611",
+      "title": "project with mark 1611",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -315,7 +315,7 @@
     "model": "projectapp.Project",
     "pk": 21,
     "fields": {
-      "title": "project with mark 1.821",
+      "title": "project with mark 1821",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -330,7 +330,7 @@
     "model": "projectapp.Project",
     "pk": 22,
     "fields": {
-      "title": "project with mark 4.631",
+      "title": "project with mark 4631",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -345,7 +345,7 @@
     "model": "projectapp.Project",
     "pk": 3,
     "fields": {
-      "title": "project with mark 1.641",
+      "title": "project with mark 1641",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -360,7 +360,7 @@
     "model": "projectapp.Project",
     "pk": 23,
     "fields": {
-      "title": "project with mark 1.651",
+      "title": "project with mark 1651",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -375,7 +375,7 @@
     "model": "projectapp.Project",
     "pk": 24,
     "fields": {
-      "title": "project with mark 1.661",
+      "title": "project with mark 1661",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -390,7 +390,7 @@
     "model": "projectapp.Project",
     "pk": 25,
     "fields": {
-      "title": "project with mark 1.671",
+      "title": "project with mark 1671",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -405,7 +405,7 @@
     "model": "projectapp.Project",
     "pk": 26,
     "fields": {
-      "title": "project with mark 1.681",
+      "title": "project with mark 1681",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",
@@ -420,7 +420,7 @@
     "model": "projectapp.Project",
     "pk": 27,
     "fields": {
-      "title": "project with mark 1.691",
+      "title": "project with mark 1691",
       "summary": "App that recommend Restaurants according the 'likes' the user puts in the different social networks.",
       "advantages": "the recommendations will be very accuracy",
       "investment": "$100 - $300 USD",

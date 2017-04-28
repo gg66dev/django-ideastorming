@@ -32,32 +32,36 @@ from django.http.response import HttpResponseForbidden
 VIEW FROM PROJECT APP
 """
 
-def index(request):
-    """
-    Main Page
-    """
-    context = dict()
+def get_ranked_project_list():
     #get 20 most popular project desc (-)
     most_ranked_project = Project.objects.order_by('-mark')[:20]
     #use the title of the project like url parameter for the detail page.
     for project in most_ranked_project:
-        project.url_detail = project.title.replace(" ", "_")
-    context['ranked_project_list'] = most_ranked_project
-    
+        project.url_detail = project.title.replace(" ", "_").replace(".", "").replace(",", "")
+    return most_ranked_project
+
+def get_latest_project_list():
     #get 20 latest project desc (-)
     latest_project = Project.objects.order_by('date_last_modification')[:20]
     #use the title of the project like url parameter for the detail page.
     for project in latest_project:
-        project.url_detail = project.title.replace(" ", "_")
-    context['latest_project_list'] = latest_project
+        project.url_detail = project.title.replace(" ", "_").replace(".", "").replace(",", "")
+    return latest_project
 
+def main(request):
+    """
+    Main Page
+    """
+    context = dict()
+    context['ranked_project_list'] = get_ranked_project_list()
+    context['latest_project_list'] = get_latest_project_list()
     return login(request,context)
 
 
 @method_decorator(login_required, name='dispatch')
 class ProjectNewView(FormView):
     """
-    Create new project view
+    Create new project 
     """
     model = Project
     template_name = 'new_project.html'
@@ -83,7 +87,7 @@ class ProjectNewView(FormView):
 @method_decorator(login_required, name='dispatch')
 class ProjectListView(ListView):
     """
-    My projects View
+    My projects 
     """
     model = Project
     template_name = 'my_projects.html'
@@ -118,7 +122,7 @@ class ProjectListView(ListView):
 
 class ProjectSearchResultsView(ListView):
     """
-    Search Project View
+    Search Project 
     """
     model = Project
     template_name = 'search_results.html'
@@ -182,7 +186,7 @@ class ProjectSearchResultsView(ListView):
 
 class ProjectDetailView(FormMixin,DetailView):
     """
-    Detail of Project view
+    Detail of Project 
     """
     model = Project
     template_name = 'detail_project.html'

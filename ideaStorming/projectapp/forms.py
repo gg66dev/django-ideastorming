@@ -35,6 +35,16 @@ class NewProjectForm(ModelForm):
             raise forms.ValidationError("This field is required.")
         return tags
 
+    def clean_title(self):
+        #check that title dont contain dots or commas.
+        #check that user hasnt other project with the same name.
+        title = self.cleaned_data['title']
+        if "." in title or "," in title:
+            raise forms.ValidationError("Title can contain dots or commas")
+        q = Project.objects.filter(user=self.app_user).filter(title=title)
+        if len(q) > 0:
+            raise forms.ValidationError("You already have a project with this title, please change the title.")
+        return title
 
     def save(self, commit=True):
         """

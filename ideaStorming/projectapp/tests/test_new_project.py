@@ -58,10 +58,42 @@ class NewProjectTest(BaseProjectWebTest):
             save_tags.append(tag.tag)
         self.assertEqual(save_tags, test_tags)    
 
-    """
-    * check project with already exist name
-    * ...
-    """
+  
+    def test_create_project_already_exist_throw_error(self):
+        self.loginJuan()
+        page = self.app.get("/new-project/")
+        page.form['title'] = "virtual cat shop" 
+        page.form['summary'] = """A virtual Shop with cat stuff where the customer can
+                                    buy things with virtual currency, this currency the customer get, buying things in 
+                                    other physic shops."""
+        page.form['advantages'] = "The customer buy thing with virtual currency."
+        page.form['investment'] = "$501 - $800 USD"
+        page.form['tags'] = "cat,shop,virtual currency"
+        page = page.form.submit()
+        
+        page = self.app.get("/new-project/")
+        page.form['title'] = "virtual cat shop" 
+        page.form['summary'] = """A virtual Shop with cat stuff where the customer can
+                                    buy things with virtual currency, this currency the customer get, buying things in 
+                                    other physic shops."""
+        page.form['advantages'] = "The customer buy thing with virtual currency."
+        page.form['investment'] = "$501 - $800 USD"
+        page.form['tags'] = "cat,shop,virtual currency"
+        page = page.form.submit()
+        self.assertContains(page,"You already have a project with this title, please change the title.")
 
+    def test_create_project_with_dots_in_title_throw_error(self):
+        self.loginJuan()
+        page = self.app.get("/new-project/")
+        page.form['title'] = "virtual.cat.shop" 
+        page.form['summary'] = """A virtual Shop with cat stuff where the customer can
+                                    buy things with virtual currency, this currency the customer get, buying things in 
+                                    other physic shops."""
+        page.form['advantages'] = "The customer buy thing with virtual currency."
+        page.form['investment'] = "$501 - $800 USD"
+        page.form['tags'] = "cat,shop,virtual currency"
+        page = page.form.submit()
+        self.assertContains(page,"Title can contain dots or commas")
+    
     #todo: test form separately
 

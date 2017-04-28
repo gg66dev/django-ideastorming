@@ -29,6 +29,9 @@ class Project(models.Model):
     tags = models.ManyToManyField(Tag)
     mark = models.DecimalField(max_digits=4, decimal_places=3,null=True)
 
+    def __str__(self):
+        return '%s' % self.title
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)

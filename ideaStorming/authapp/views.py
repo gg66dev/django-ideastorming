@@ -23,19 +23,19 @@ def login(request,context):
             django_login(request,user)
             #use user info to display in the view
             context['page'] = 'home'
-            return render(request, 'index.html', context)
+            return render(request, 'main.html', context)
     else:
         form = LoginForm()
 
     context['form'] = form
     context['display_login_form'] = True
     context['page'] = 'home'
-    return render(request, 'index.html', context)
+    return render(request, 'main.html', context)
 
 def logout(request):
     django_logout(request)
     form = LoginForm()
-    return redirect('index')
+    return redirect('main')
 
 
 class UserRegister(FormView):
