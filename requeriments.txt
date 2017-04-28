@@ -4,6 +4,7 @@ Django==1.10.5
 django-mssql==1.8
 django-webtest==1.8.0
 django-widget-tweaks==1.4.1
+humanize==0.5.1
 packaging==16.8
 psycopg2==2.6.2
 pyparsing==2.1.10
