@@ -104,7 +104,26 @@ class UserViewTest(WebTest):
         page = page.form.submit()
         self.assertContains(page,"Passwords dont match.")
     
-
+    def test_user_already_exist(self):
+        page = self.app.get("/register/")
+        page.form['company'] = "other company SA"
+        page.form['confirm_password'] = "abcdef"
+        page.form['country'] = "Chile"
+        page.form['email'] = "pereira2@email.cl"
+        page.form['first_name'] = "Pedro"
+        page.form['last_name'] = "Pereira"
+        page.form['password'] = "abcdef"
+        page = page.form.submit()
+        page = self.app.get("/register/")
+        page.form['company'] = "other company SA"
+        page.form['confirm_password'] = "abcdef"
+        page.form['country'] = "Chile"
+        page.form['email'] = "pereira2@email.cl"
+        page.form['first_name'] = "Pedro"
+        page.form['last_name'] = "Pereira"
+        page.form['password'] = "abcdef"
+        page = page.form.submit()
+        self.assertContains(page,"This email is already registered")
 
 #login - logout test
 class LogInLogOutTest(WebTest):

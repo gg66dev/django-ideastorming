@@ -39,8 +39,8 @@ class NewProjectForm(ModelForm):
         #check that title dont contain dots or commas.
         #check that user hasnt other project with the same name.
         title = self.cleaned_data['title']
-        if "." in title or "," in title:
-            raise forms.ValidationError("Title can contain dots or commas")
+        if "." in title or "," in title or "_" in title:
+            raise forms.ValidationError("Title can contain dots,commas or underscores")
         q = Project.objects.filter(user=self.app_user).filter(title=title)
         if len(q) > 0:
             raise forms.ValidationError("You already have a project with this title, please change the title.")
