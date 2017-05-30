@@ -2,6 +2,8 @@ import humanize
 
 from datetime import datetime
 
+from django.views import View
+
 #from django.views.generic.edit import CreateView
 from django.views.generic import FormView
 from django.views.generic.list import ListView
@@ -261,3 +263,10 @@ class ProjectDetailView(FormMixin,DetailView):
         form.save()
         messages.success(self.request, 'Thanks for you comment.')
         return super(ProjectDetailView, self).form_valid(form)
+
+
+class ProjectDeleteView(View):
+    pass
+
+class ProjectEditView(View):
+    pass

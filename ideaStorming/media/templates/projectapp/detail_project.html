@@ -3,31 +3,49 @@
 {% load widget_tweaks %}
 {% block content %}
 
+<div class="container">
+    <div class="row" style="width: 800px;">
+        <div style="float:left;">
+            <h3>{{ object.title }}</h3>
+        </div>
+        <div style="float:right; padding-top: 10px;">
+            <a href="{% url 'edit-project' project_title=project.url_detail user_id=project.user.id %}"
+               class="btn btn-default text-left">
+                Edit
+            </a>
+            <a <a href="{% url 'delete-project' project_title=project.url_detail user_id=project.user.id %}"
+               class="btn btn-default text-left">
+                Delete
+            </a>
+        </div>
 
-<div>
-    <h3>{{ object.title }}</h3>
-    <br>
-</div>
-<div class="text-left">
-    <p>Summary: {{ object.summary }}</p>
-    <p>Advantages: {{ object.advantages }}</p>
-    <p>Investment: {{ object.investment }}</p>
-    <p>Date creation : {{ object.date_creation }} </p>
-    <p>Date last modification :{{ object.date_last_modification }} </p>
-    <p>Tags : {% for tag in object.tags.all %}{{ tag }} {% endfor %} </p>
-</div> 
-
-{% for message in messages %}
-    <div class="alert alert-success">
-        <strong>{{ message }}</strong>
     </div>
-{% endfor %}
-<div class="container">
-    {% include "comments.html" %}
-</div>
-<div class="container">
-    {% include "new_comment.html" %}
+    <br>
+    <div class="row text-left">
+        <p>Summary: {{ object.summary }}</p>
+        <p>Advantages: {{ object.advantages }}</p>
+        <p>Investment: {{ object.investment }}</p>
+        <p>Date creation : {{ object.date_creation }} </p>
+        <p>Date last modification :{{ object.date_last_modification }} </p>
+        <p>Tags : {% for tag in object.tags.all %}{{ tag }} {% endfor %} </p>
+    </div>
+
+
+    <div class="row">
+        {% for message in messages %}
+        <div class="alert alert-success">
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% include "comments.html" %}
+    </div>
+    <div class="row">
+        {% include "new_comment.html" %}
+    </div>
 </div>
 
-{% endblock content %}
+    {% endblock content %}
 
