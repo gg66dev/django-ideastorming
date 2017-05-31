@@ -8,17 +8,18 @@
         <div style="float:left;">
             <h3>{{ object.title }}</h3>
         </div>
+        {% if display_edit_delete_button %}
         <div style="float:right; padding-top: 10px;">
             <a href="{% url 'edit-project' project_title=project.url_detail user_id=project.user.id %}"
                class="btn btn-default text-left">
                 Edit
             </a>
-            <a <a href="{% url 'delete-project' project_title=project.url_detail user_id=project.user.id %}"
+            <a <a href=""
                class="btn btn-default text-left">
                 Delete
             </a>
         </div>
-
+        {% endif %}
     </div>
     <br>
     <div class="row text-left">

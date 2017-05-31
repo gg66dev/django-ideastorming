@@ -221,9 +221,8 @@ class ProjectDetailView(FormMixin,DetailView):
             return q[0]
         except Project.DoesNotExist:
             raise Http404
-        
-
     
+
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
         
@@ -235,7 +234,7 @@ class ProjectDetailView(FormMixin,DetailView):
 
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
-        # display form if:
+        # display comment form if:
         #   * user is log in
         #   * the user dont have a comment in the project. 
         #   * the user is not the project owner
@@ -243,6 +242,12 @@ class ProjectDetailView(FormMixin,DetailView):
                 and not self.is_second_comment(self.request.user,project)\
                 and project.user.username != self.request.user.username:
             context['new_comment_form'] = self.get_form()
+        
+        project.url_detail = project.title.replace(" ","_")    
+        context['project'] = project
+        if project.user.username == self.request.user.username:
+            context['display_edit_delete_button'] = True
+
         return context
 
     def is_second_comment(self,user,project):
@@ -265,8 +270,45 @@ class ProjectDetailView(FormMixin,DetailView):
         return super(ProjectDetailView, self).form_valid(form)
 
 
-class ProjectDeleteView(View):
-    pass
+#class ProjectDeleteView(View):
+#    pass
 
-class ProjectEditView(View):
-    pass
+@method_decorator(login_required, name='dispatch')
+class ProjectEditView(FormView):
+    model = Project
+    template_name = 'edit_project.html'
+    success_url = '/edit-project/'
+    form_class = NewProjectForm
+
+    def get_form_kwargs(self, **kwargs):
+        form_kwargs = super(ProjectEditView, self).get_form_kwargs(**kwargs)
+        form_kwargs["user"] = self.request.user
+        return form_kwargs
+
+
+    #get the object with the title pass in the url
+    def get_object(self):
+        try:
+            project_title = self.kwargs['project_title'].replace('_',' ')
+            user_id = self.kwargs['user_id']
+            q = self.model.objects.filter(title__iexact=project_title).filter(user__id=int(user_id))
+            if(len(q) < 1):
+                raise Http404
+            return q[0]
+        except Project.DoesNotExist:
+            raise Http404
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectEditView, self).get_context_data(**kwargs)
+        
+        project = self.get_object()
+        comment_list = Comment.objects.filter(project=project)
+        #process day of the comment
+        for comment in comment_list:
+            comment.day = humanize.naturalday(comment.publication_date)
+
+        context['comment_list'] = comment_list
+        context['num_comments'] = len(comment_list)
+
+        
+        return context
