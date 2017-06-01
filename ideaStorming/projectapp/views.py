@@ -312,3 +312,22 @@ class ProjectEditView(FormView):
 
         
         return context
+
+
+    def get_initial(self):
+        initial = super(ProjectEditView, self).get_initial()
+        project = self.get_object()
+
+        initial['title'] = project.title
+        initial['summary'] = project.summary
+        initial['advantages'] = project.advantages
+        initial['investment'] = project.investment
+        
+        tags = project.tags.all();
+        strTag = ''
+        for tag in tags:
+            strTag =  strTag + str(tag) + ','
+        
+        initial['tags'] = strTag[:-1]
+        
+        return initial
