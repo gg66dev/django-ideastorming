@@ -24,9 +24,10 @@ class NewProjectForm(ModelForm):
     
     tags = forms.CharField(widget=TagListWidget())
     
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, user, mode , *args, **kwargs):
         app_user = User.objects.get(username=user.username)
         self.app_user = app_user
+        self.mode = mode
         super(NewProjectForm, self).__init__(*args, **kwargs)
     
     def clean_tags(self):
@@ -42,7 +43,7 @@ class NewProjectForm(ModelForm):
         if "." in title or "," in title or "_" in title:
             raise forms.ValidationError("Title can contain dots,commas or underscores")
         q = Project.objects.filter(user=self.app_user).filter(title=title)
-        if len(q) > 0:
+        if len(q) > 0 and self.mode == 'new':
             raise forms.ValidationError("You already have a project with this title, please change the title.")
         return title
 

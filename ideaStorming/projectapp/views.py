@@ -8,7 +8,7 @@ from django.views import View
 from django.views.generic import FormView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin,UpdateView
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -75,6 +75,7 @@ class ProjectNewView(FormView):
     def get_form_kwargs(self, **kwargs):
         form_kwargs = super(ProjectNewView, self).get_form_kwargs(**kwargs)
         form_kwargs["user"] = self.request.user
+        form_kwargs["mode"] = 'new' 
         return form_kwargs
 
     def get_context_data(self, **kwargs):
@@ -274,15 +275,16 @@ class ProjectDetailView(FormMixin,DetailView):
 #    pass
 
 @method_decorator(login_required, name='dispatch')
-class ProjectEditView(FormView):
+class ProjectEditView(UpdateView):
     model = Project
     template_name = 'edit_project.html'
-    success_url = '/edit-project/'
+    success_url = '/my-projects/'
     form_class = NewProjectForm
 
     def get_form_kwargs(self, **kwargs):
         form_kwargs = super(ProjectEditView, self).get_form_kwargs(**kwargs)
         form_kwargs["user"] = self.request.user
+        form_kwargs["mode"] = 'update'
         return form_kwargs
 
 
