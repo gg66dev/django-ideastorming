@@ -4,8 +4,8 @@ from datetime import datetime
 
 from django.views import View
 
-#from django.views.generic.edit import CreateView
-from django.views.generic import FormView
+
+from django.views.generic import FormView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormMixin,UpdateView
@@ -270,10 +270,6 @@ class ProjectDetailView(FormMixin,DetailView):
         messages.success(self.request, 'Thanks for you comment.')
         return super(ProjectDetailView, self).form_valid(form)
 
-
-#class ProjectDeleteView(View):
-#    pass
-
 @method_decorator(login_required, name='dispatch')
 class ProjectEditView(UpdateView):
     model = Project
@@ -311,7 +307,7 @@ class ProjectEditView(UpdateView):
 
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
-
+        context['select_comment_to_add_project'] = True
         
         return context
 
@@ -331,5 +327,6 @@ class ProjectEditView(UpdateView):
             strTag =  strTag + str(tag) + ','
         
         initial['tags'] = strTag[:-1]
+        
         
         return initial

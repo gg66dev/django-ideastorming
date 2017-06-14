@@ -3,6 +3,7 @@
         <div class="page-header">
             <h3> Comments <small class="pull-right">{{ num_comments }} comments</small></h3>
         </div>
+        {% if not select_comment_to_add_project %}
         <div class="comments-list">
             {% for comment in comment_list %}
             <div class="media">
@@ -14,9 +15,41 @@
                     </div>
                     <div style="float:left;"><h5 class="pull-right">score: {{comment.score}}/5</h5></div>
                 </div>
-
             </div>
             {% endfor %}
         </div>
+        {%  else %}
+        <div class="comments-list">
+            <table class="table table-condensed">
+                <thead>
+                    <tr><span style="font-weight:bold">Add idea to Project</span></tr>
+                    <tr></tr>
+                    <tr></tr>
+                </thead>
+                <tbody>
+                    {% for comment in comment_list %}
+                    <tr>
+                        <td style="width: 100px; text-align: center; vertical-align: middle;">
+                            <div class="checkbox">
+                                <input type="checkbox" value="">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="media-body" style="width: 300px;">
+                                <div>
+                                    <h4 class="media-heading user_name">{{ comment.user }}</h4>
+                                    {{ comment.comment }}
+                                </div>
+                                <div style="float:left;"><h5>score: {{comment.score}}/5</h5></div>
+                            </div>
+                        </td>
+                        <td style="width: 100px;"><h5><small>{{comment.day}}</small></h5></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-default">Add Ideas to Project.</button>
+        </div>
+        {% endif %}
     </div>
 </div>
