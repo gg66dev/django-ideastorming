@@ -1,4 +1,5 @@
-﻿<div class="row text-left">
+﻿
+<div class="row text-left">
     <div class="col-md-8">
         <div class="page-header">
             <h3> Comments <small class="pull-right">{{ num_comments }} comments</small></h3>
@@ -13,7 +14,13 @@
                         <h4 class="media-heading user_name">{{ comment.user }}</h4>
                         {{ comment.comment }}
                     </div>
+                    {% comment %}
                     <div style="float:left;"><h5 class="pull-right">score: {{comment.score}}/5</h5></div>
+                    {% endcomment %}
+                    <div style="float:left;">
+                        <input type="hidden" class="rating" />
+                    </div>
+
                 </div>
             </div>
             {% endfor %}
@@ -40,7 +47,12 @@
                                     <h4 class="media-heading user_name">{{ comment.user }}</h4>
                                     {{ comment.comment }}
                                 </div>
+                                {% comment %}
                                 <div style="float:left;"><h5>score: {{comment.score}}/5</h5></div>
+                                {% endcomment %}
+                                <div style="float:left;">
+                                    <input type="hidden" class="rating" />
+                                </div>
                             </div>
                         </td>
                         <td style="width: 100px;"><h5><small>{{comment.day}}</small></h5></td>

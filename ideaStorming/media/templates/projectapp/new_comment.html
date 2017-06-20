@@ -28,7 +28,8 @@
             <div class="form-group">
                 <label for="{{ new_comment_form.score.id_for_label }}" class="col-sm-2 control-label">{{ new_comment_form.score.label }}</label>
                 <div class="col-sm-8">
-                    {% render_field new_comment_form.score class+="form-control" %}
+                    {% comment %} {% render_field new_comment_form.score class+="form-control" %} {% endcomment %}
+                    <input type="hidden" class="rating" />    
                     {% if new_comment_form.score.errors %}
                     <div class="alert alert-danger text-left">
                         {{ new_comment_form.score.errors }}

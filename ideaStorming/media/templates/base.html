@@ -13,6 +13,9 @@
     <link href="{% static 'css/justified-nav.css' %}" rel="stylesheet">
     <link href="{% static 'css/taggle.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/project.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-rating.css' %}" rel="stylesheet">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet">
+
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -26,15 +29,19 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/taggle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-rating.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+
 </head>
 <body>
     <!-- import login /info-user bar -->
     <div class="container">
-            {% include "topbar.html" %}
-            </br>
-            {% block content %}
-            {% endblock content %}
-     </div>
+        {% include "topbar.html" %}
+        </br>
+        {% block content %}
+        {% endblock content %}
+    </div>
 
     <input id="current_page" type="hidden" value="{{ page }}" />
 </body>
