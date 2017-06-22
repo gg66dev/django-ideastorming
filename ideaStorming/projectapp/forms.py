@@ -72,6 +72,7 @@ class NewProjectForm(ModelForm):
 
 class NewCommentForm(ModelForm):
     project_title = forms.CharField(required=True, max_length= 200)
+    score = forms.CharField(widget=forms.HiddenInput())
 
     class Meta:
         model = Comment

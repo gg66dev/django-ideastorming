@@ -14,9 +14,6 @@
                         <h4 class="media-heading user_name">{{ comment.user }}</h4>
                         {{ comment.comment }}
                     </div>
-                    {% comment %}
-                    <div style="float:left;"><h5 class="pull-right">score: {{comment.score}}/5</h5></div>
-                    {% endcomment %}
                     <div style="float:left;">
                         <input type="hidden" class="rating" id="ratingComment_{{ forloop.counter0 }}" data-readonly/>
                         <script>
@@ -50,9 +47,6 @@
                                     <h4 class="media-heading user_name">{{ comment.user }}</h4>
                                     {{ comment.comment }}
                                 </div>
-                                {% comment %}
-                                <div style="float:left;"><h5>score: {{comment.score}}/5</h5></div>
-                                {% endcomment %}
                                 <div style="float:left;">   
                                     <input type="hidden" class="rating" id="ratingComment_{{ forloop.counter0 }}" data-readonly/>
                                     <script>
