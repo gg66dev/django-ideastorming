@@ -4,40 +4,49 @@
 {% block content %}
 
 <div class="container">
-    <div class="row" style="width: 800px;">
-        <div style="float:left;">
-            <h3>{{ object.title }}</h3>
-        </div>
-        {% if display_edit_delete_button %}
-        <div style="float:right; padding-top: 10px;">
-            <a href="{% url 'edit-project' project_title=project.url_detail user_id=project.user.id %}"
-               class="btn btn-default text-left">
-                Edit
-            </a>
-            <a <a href=""
+    <div class="row">
+        <div class="col-md-8">
+            <div style="float:left;">
+                <h3>{{ object.title }}</h3>
+            </div>
+            {% if display_edit_delete_button %}
+            <div style="float:right; padding-top: 10px;">
+                <a href="{% url 'edit-project' project_title=project.url_detail user_id=project.user.id %}"
+                   class="btn btn-default text-left">
+                    Edit
+                </a>
+                <a <a href=""
                class="btn btn-default text-left">
                 Delete
             </a>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
     <br>
     <div class="row text-left">
-        <p>Summary: {{ object.summary }}</p>
-        <p>Advantages: {{ object.advantages }}</p>
-        <p>Investment: {{ object.investment }}</p>
-        <p>Date creation : {{ object.date_creation }} </p>
-        <p>Date last modification :{{ object.date_last_modification }} </p>
-        <p>Tags : {% for tag in object.tags.all %}{{ tag }} {% endfor %} </p>
+        <div class="col-md-8">
+            <p>Summary: {{ object.summary }}</p>
+            <p>Advantages: {{ object.advantages }}</p>
+            <p>Investment: {{ object.investment }}</p>
+            <p>Date creation : {{ object.date_creation }} </p>
+            <p>Date last modification :{{ object.date_last_modification }} </p>
+            <p>Tags : {% for tag in object.tags.all %}{{ tag }} {% endfor %} </p>
+        </div>
     </div>
 
 
     <div class="row">
-        {% for message in messages %}
-        <div class="alert alert-success">
-            <strong>{{ message }}</strong>
+        <div class="col-md-8">
+            {% for message in messages %}
+            <div class="alert alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+    </div>
+    <div class="row">
+        {% include "selected_comments.html" %}
     </div>
 
     <div class="row">

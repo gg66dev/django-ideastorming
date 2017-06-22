@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div>
                 <h3>Edit Project</h3>
                 <br>
@@ -52,6 +52,10 @@
             <strong>{{ message }}</strong>
         </div>
         {% endfor %}
+    </div>
+
+    <div class="row">
+        {% include "selected_comments.html" %}
     </div>
 
     <div class="row">
