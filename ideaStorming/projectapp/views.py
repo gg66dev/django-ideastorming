@@ -26,7 +26,7 @@ from authapp.views import login
 from authapp.forms import LoginForm
 
 from .models import Project, Comment
-from .forms import NewProjectForm, NewCommentForm
+from .forms import NewProjectForm, NewCommentForm, SelectCommentForm
 from django.http.response import HttpResponseForbidden
 
 
@@ -304,11 +304,13 @@ class ProjectEditView(UpdateView):
         #process day of the comment
         for comment in comment_list:
             comment.day = humanize.naturalday(comment.publication_date)
+            
 
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
         context['select_comment_to_add_project'] = True
-        
+        context['select_comment_form'] = SelectCommentForm(project)
+
         return context
 
 

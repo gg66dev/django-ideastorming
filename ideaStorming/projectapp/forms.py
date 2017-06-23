@@ -105,3 +105,12 @@ class NewCommentForm(ModelForm):
         if commit:
             comment_instance.save()
         return comment_instance
+
+
+class SelectCommentForm(forms.Form):
+    def __init__(self, project, *args, **kwargs):
+        super(SelectCommentForm, self).__init__(*args, **kwargs)
+        self.fields['comments'] = forms.MultipleChoiceField(
+            choices = [(o.id, str(o)) for o in Comment.objects.filter(project=project)], 
+            widget  = forms.CheckboxSelectMultiple,
+        )

@@ -1,4 +1,5 @@
-﻿
+﻿{% load index %}
+{% load getattribute %}
 <div class="row text-left">
     <div class="col-md-8">
         <div class="page-header">
@@ -34,28 +35,28 @@
                     <tr></tr>
                 </thead>
                 <tbody>
-                    {% for comment in comment_list %}
+                    {% for comment_choose in select_comment_form.comments.field.choices %}  
                     <tr>
                         <td style="width: 100px; text-align: center; vertical-align: middle;">
                             <div class="checkbox">
-                                <input type="checkbox" value="">
+                                 <input type="checkbox" name="selected_comment" value="{{comment_choose.0}}" /> 
                             </div>
                         </td>
                         <td>
                             <div class="media-body" style="width: 300px;">
                                 <div>
-                                    <h4 class="media-heading user_name">{{ comment.user }}</h4>
-                                    {{ comment.comment }}
+                                    <h4 class="media-heading user_name">{{ comment_list|index:forloop.counter0|getattribute:'user' }}</h4>
+                                    {{ comment_list|index:forloop.counter0|getattribute:'comment'}}
                                 </div>
-                                <div style="float:left;">   
-                                    <input type="hidden" class="rating" id="ratingComment_{{ forloop.counter0 }}" data-readonly/>
+                                <div style="float:left;">
+                                    <input type="hidden" class="rating" id="ratingComment_{{ forloop.counter0 }}" data-r data-readonly />
                                     <script>
-                                        rankingModule.setRanking("#ratingComment_{{ forloop.counter0 }}",{{comment.score}});
+                                        rankingModule.setRanking("#ratingComment_{{ forloop.counter0 }}",{{comment_list|index:forloop.counter0|getattribute:'score'}});
                                     </script>
                                 </div>
                             </div>
                         </td>
-                        <td style="width: 100px;"><h5><small>{{comment.day}}</small></h5></td>
+                        <td style="width: 100px;"><h5><small>{{ comment_list|index:forloop.counter0|getattribute:'day' }}</small></h5></td>
                     </tr>
                     {% endfor %}
                 </tbody>
