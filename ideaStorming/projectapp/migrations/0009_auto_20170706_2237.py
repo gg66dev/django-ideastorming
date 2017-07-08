@@ -17,7 +17,7 @@ def load_projects(apps, schema_editor):
 
 	users = User.objects.all()
 	app_project = Project(
-		title = "Duis pellentesque, neque quis", 
+		title = "Duis pellentesque neque quis", 
 		summary = "Morbi vitae dui purus. Duis nisl ante, varius quis varius sed, fermentum sit amet quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eget ornare sapien. Maecenas vestibulum lorem vel sem ornare porta. Nunc efficitur sem in quam lobortis iaculis.",
 		advantages = "Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed eu ullamcorper dolor, nec commodo elit. Praesent eget sagittis est. Praesent eget cursus purus.",
 		investment = "$100 - $300 USD",
@@ -94,7 +94,7 @@ def load_projects(apps, schema_editor):
 	for tag in random.sample(tag_list,  random.randint(1, 7)):
 		app_project.tags.add(tag)
 	app_project = Project(
-		title = "Nullam ligula quam, luctus ac", 
+		title = "Nullam ligula quam luctus ac", 
 		summary = "Morbi vitae dui purus. Duis nisl ante, varius quis varius sed, fermentum sit amet quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eget ornare sapien. Maecenas vestibulum lorem vel sem ornare porta. Nunc efficitur sem in quam lobortis iaculis.",
 		advantages = "Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed eu ullamcorper dolor, nec commodo elit. Praesent eget sagittis est. Praesent eget cursus purus.",
 		investment = "$100 - $300 USD",
