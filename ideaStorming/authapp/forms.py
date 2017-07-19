@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate
 
 from authapp.models import User
 
-
 class LoginForm(forms.Form):
     email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput())
@@ -80,3 +79,11 @@ class UserForm(ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class AddCommentToProjectForm(forms.Form):
+    choices = forms.MultipleChoiceField(
+        widget  = forms.CheckboxSelectMultiple,
+    )
+
+

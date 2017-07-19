@@ -27,40 +27,47 @@
         </div>
         {%  else %}
         <div class="comments-list">
-            <table class="table table-condensed">
-                <thead>
-                    <tr><span style="font-weight:bold">Add idea to Project</span></tr>
-                    <tr></tr>
-                    <tr></tr>
-                </thead>
-                <tbody>
-                    {% for comment_choose in select_comment_form.comments.field.choices %}  
-                    <tr>
-                        <td style="width: 100px; text-align: center; vertical-align: middle;">
-                            <div class="checkbox">
-                                 <input type="checkbox" name="selected_comment" value="{{comment_choose.0}}" /> 
-                            </div>
-                        </td>
-                        <td>
-                            <div class="media-body" style="width: 300px;">
-                                <div>
-                                    <h4 class="media-heading user_name">{{ comment_list|index:forloop.counter0|getattribute:'user' }}</h4>
-                                    {{ comment_list|index:forloop.counter0|getattribute:'comment'}}
+            <form action="" method="post" class="form-horizontal" >
+                {% csrf_token %}
+                <table class="table table-condensed">
+                    <thead>
+                        <tr><span style="font-weight:bold">Add idea to Project</span></tr>
+                        <tr></tr>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        {% for comment_choose in select_comment_form.comments.field.choices %}
+                        <tr>
+                            <td style="width: 100px; text-align: center; vertical-align: middle;">
+                                <div class="checkbox">
+                                    <input type="checkbox" name="selected_comment" value="{{comment_choose.0}}" />
                                 </div>
-                                <div style="float:left;">
-                                    <input type="hidden" class="rating" id="ratingComment_{{ forloop.counter0 }}" data-r data-readonly />
-                                    <script>
-                                        rankingModule.setRanking("#ratingComment_{{ forloop.counter0 }}",{{comment_list|index:forloop.counter0|getattribute:'score'}});
-                                    </script>
+                            </td>
+                            <td>
+                                <div class="media-body" style="width: 300px;">
+                                    <div>
+                                        <h4 class="media-heading user_name">{{ comment_list|index:forloop.counter0|getattribute:'user' }}</h4>
+                                        {{ comment_list|index:forloop.counter0|getattribute:'comment'}}
+                                    </div>
+                                    <div style="float:left;">
+                                        <input type="hidden" class="rating" id="ratingComment_{{ forloop.counter0 }}" data-r data-readonly />
+                                        <script>
+                                            rankingModule.setRanking("#ratingComment_{{ forloop.counter0 }}", {{comment_list|index:forloop.counter0 | getattribute:'score'}});
+                                        </script>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td style="width: 100px;"><h5><small>{{ comment_list|index:forloop.counter0|getattribute:'day' }}</small></h5></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <button type="submit" class="btn btn-default">Add Ideas to Project.</button>
+                            </td>
+                            <td style="width: 100px;"><h5><small>{{ comment_list|index:forloop.counter0|getattribute:'day' }}</small></h5></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <button id="save-btn" type="submit" class="btn btn-default text-left">Add Ideas to Project.</button>
+                    </div>
+                </div>
+            </form>
         </div>
         {% endif %}
     </div>

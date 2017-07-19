@@ -43,4 +43,5 @@ class Comment(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     score  = models.IntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
     comment = models.TextField()
+    added_to_project = models.BooleanField(default=False)
     publication_date = models.DateField(auto_now_add=True, null=True)
