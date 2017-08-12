@@ -108,9 +108,34 @@ class NewCommentForm(ModelForm):
 
 
 class SelectCommentForm(forms.Form):
-    def __init__(self, project, *args, **kwargs):
+    def __init__(self, project_title, user_id, *args, **kwargs):
         super(SelectCommentForm, self).__init__(*args, **kwargs)
-        self.fields['comments'] = forms.MultipleChoiceField(
-            choices = [(o.id, str(o)) for o in Comment.objects.filter(project=project)], 
+        project = Project.objects.filter(user__id=user_id).filter(title=project_title);
+        self.valid_choices_id = [str(o.id) for o in Comment.objects.filter(project=project)]
+        choices =  [(str(o.id), str(o)) for o in Comment.objects.filter(project=project)]
+        self.fields['selected_comments'] = forms.MultipleChoiceField(
+            choices = choices, 
             widget  = forms.CheckboxSelectMultiple,
         )
+    
+    def clean_selected_comment(self):
+        selected_comments = self.cleaned_data['selected_comments']
+        if not selected_comments:
+            raise forms.ValidationError("This field is required.")
+        for id in selected_comments:
+            if id not in self.valid_choices_id:
+                raise forms.ValidationError("invalid comment selected")
+        return selected_comments
+    
+    def save(self):
+        comment_selected_id = self.cleaned_data['selected_comments'] 
+        for comment_id in comment_selected_id:
+            comment = Comment.objects.get(id=comment_id)
+            comment.added_to_project = True
+            comment.save();
+
+
+
+class UnSelectCommentForm(forms.Form):
+    pass
+    

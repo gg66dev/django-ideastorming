@@ -1,0 +1,32 @@
+[
+  {
+    "model": "projectapp.Comment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "project": 2,
+      "score": 3,
+      "comment": "this is a comment."
+    }
+  },
+  {
+    "model": "projectapp.Comment",
+    "pk": 2,
+    "fields": {
+      "user": 5,
+      "project": 2,
+      "score": 3,
+      "comment": "this is a another comment."
+    }
+  },
+  {
+    "model": "projectapp.Comment",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "project": 2,
+      "score": 3,
+      "comment": "why not another comment."
+    }
+  }
+]

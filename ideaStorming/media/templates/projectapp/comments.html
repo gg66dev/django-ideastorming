@@ -27,7 +27,7 @@
         </div>
         {%  else %}
         <div class="comments-list">
-            <form action="" method="post" class="form-horizontal" >
+            <form action="{% url 'select-comments' project_title=project.url_detail user_id=project.user.id %}" method="post" class="form-horizontal" >
                 {% csrf_token %}
                 <table class="table table-condensed">
                     <thead>
@@ -36,11 +36,11 @@
                         <tr></tr>
                     </thead>
                     <tbody>
-                        {% for comment_choose in select_comment_form.comments.field.choices %}
+                        {% for comment_choose in select_comment_form.selected_comments.field.choices %}
                         <tr>
                             <td style="width: 100px; text-align: center; vertical-align: middle;">
                                 <div class="checkbox">
-                                    <input type="checkbox" name="selected_comment" value="{{comment_choose.0}}" />
+                                    <input type="checkbox" name="selected_comments" value="{{comment_choose.0}}" />
                                 </div>
                             </td>
                             <td>

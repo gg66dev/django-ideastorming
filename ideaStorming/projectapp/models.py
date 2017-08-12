@@ -45,3 +45,6 @@ class Comment(models.Model):
     comment = models.TextField()
     added_to_project = models.BooleanField(default=False)
     publication_date = models.DateField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.comment

@@ -81,9 +81,5 @@ class UserForm(ModelForm):
         return instance
 
 
-class AddCommentToProjectForm(forms.Form):
-    choices = forms.MultipleChoiceField(
-        widget  = forms.CheckboxSelectMultiple,
-    )
 
 

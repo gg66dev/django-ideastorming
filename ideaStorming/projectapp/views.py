@@ -12,6 +12,7 @@ from django.views.generic.edit import FormMixin,UpdateView
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 from django.http import Http404
 from django.contrib import messages
 from django.urls import reverse
@@ -26,7 +27,7 @@ from authapp.views import login
 from authapp.forms import LoginForm
 
 from .models import Project, Comment
-from .forms import NewProjectForm, NewCommentForm, SelectCommentForm
+from .forms import NewProjectForm, NewCommentForm, SelectCommentForm, UnSelectCommentForm
 from django.http.response import HttpResponseForbidden
 
 
@@ -270,6 +271,23 @@ class ProjectDetailView(FormMixin,DetailView):
         messages.success(self.request, 'Thanks for you comment.')
         return super(ProjectDetailView, self).form_valid(form)
 
+@login_required
+@require_http_methods(["POST"])
+def selectComment(request,project_title,user_id):
+    form = SelectCommentForm(project_title.replace('_',' '),user_id,request.POST)
+    if form.is_valid():
+        form.save()
+    return redirect('edit-project', project_title=project_title, user_id=user_id)
+    
+@login_required
+@require_http_methods(["POST"])
+def unselectComment(request,project_title,user_id):
+    form = UnSelectCommentForm(request.POST)
+    if form.is_valid():
+        form.save()
+    return redirect('edit-project', project_title=project_title, user_id=user_id)
+
+
 @method_decorator(login_required, name='dispatch')
 class ProjectEditView(UpdateView):
     model = Project
@@ -300,16 +318,17 @@ class ProjectEditView(UpdateView):
         context = super(ProjectEditView, self).get_context_data(**kwargs)
         
         project = self.get_object()
+        project.url_detail = project.title.replace(" ","_")
         comment_list = Comment.objects.filter(project=project)
         #process day of the comment
         for comment in comment_list:
             comment.day = humanize.naturalday(comment.publication_date)
             
-
+        context['project'] = project
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
         context['select_comment_to_add_project'] = True
-        context['select_comment_form'] = SelectCommentForm(project)
+        context['select_comment_form'] = SelectCommentForm(project.title,project.user.id)
 
         return context
 
@@ -329,6 +348,5 @@ class ProjectEditView(UpdateView):
             strTag =  strTag + str(tag) + ','
         
         initial['tags'] = strTag[:-1]
-        
         
         return initial

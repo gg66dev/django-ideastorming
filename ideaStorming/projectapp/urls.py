@@ -12,5 +12,9 @@ urlpatterns = [
     #    views.ProjectDeleteView.as_view(), name='delete-project'),
     url(r'^edit-project/(?P<project_title>[\w.@+-]+)/(?P<user_id>\d+)/$', 
         views.ProjectEditView.as_view(), name='edit-project'),
+    url(r'^edit-project/(?P<project_title>[\w.@+-]+)/(?P<user_id>\d+)/selectComment$', 
+        views.selectComment , name='select-comments'),
+    url(r'^edit-project/(?P<project_title>[\w.@+-]+)/(?P<user_id>\d+)/unselectComment$', 
+        views.unselectComment , name='unselect-comments'),
     url(r'^search/$',views.ProjectSearchResultsView.as_view(), name='search'),
 ]
