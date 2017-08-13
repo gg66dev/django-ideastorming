@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.utils.safestring import mark_safe
+from django.db.models import Q
 
 from authapp.models import User
 from .models import Project, Tag, Comment
@@ -111,13 +112,15 @@ class SelectCommentForm(forms.Form):
     def __init__(self, project_title, user_id, *args, **kwargs):
         super(SelectCommentForm, self).__init__(*args, **kwargs)
         project = Project.objects.filter(user__id=user_id).filter(title=project_title);
-        self.valid_choices_id = [str(o.id) for o in Comment.objects.filter(project=project)]
-        choices =  [(str(o.id), str(o)) for o in Comment.objects.filter(project=project)]
+        comments = Comment.objects.filter(Q(project=project) & Q(added_to_project=False))
+        choices =  [ (str(o.id), str(o)) for o in comments ]
         self.fields['selected_comments'] = forms.MultipleChoiceField(
             choices = choices, 
             widget  = forms.CheckboxSelectMultiple,
         )
-    
+        self.valid_choices_id = [ str(o.id) for o in comments ]
+        self.has_comments = len(comments) > 0
+
     def clean_selected_comment(self):
         selected_comments = self.cleaned_data['selected_comments']
         if not selected_comments:

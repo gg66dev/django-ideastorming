@@ -16,6 +16,8 @@ from django.views.decorators.http import require_http_methods
 from django.http import Http404
 from django.contrib import messages
 from django.urls import reverse
+from django.db.models import Q
+
 
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
@@ -319,17 +321,25 @@ class ProjectEditView(UpdateView):
         
         project = self.get_object()
         project.url_detail = project.title.replace(" ","_")
-        comment_list = Comment.objects.filter(project=project)
+        comment_list = Comment.objects.filter(Q(project=project))
+        selected_comment_list = comment_list.filter(Q(added_to_project=True)) 
         #process day of the comment
         for comment in comment_list:
             comment.day = humanize.naturalday(comment.publication_date)
+        for comment in selected_comment_list:
+            comment.day = humanize.naturalday(comment.publication_date)
             
+
         context['project'] = project
         context['comment_list'] = comment_list
         context['num_comments'] = len(comment_list)
         context['select_comment_to_add_project'] = True
-        context['select_comment_form'] = SelectCommentForm(project.title,project.user.id)
-
+        
+        selectedCommentForm = SelectCommentForm(project.title,project.user.id)
+        if selectedCommentForm.has_comments:
+            context['select_comment_form'] = selectedCommentForm 
+        if len(selected_comment_list) > 0:
+            context['selected_comment_list'] = selected_comment_list
         return context
 
 

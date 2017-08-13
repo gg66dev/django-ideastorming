@@ -2,10 +2,10 @@
 {% load getattribute %}
 <div class="row text-left">
     <div class="col-md-8">
+        {% if not select_comment_to_add_project and comment_list %}
         <div class="page-header">
             <h3> Comments <small class="pull-right">{{ num_comments }} comments</small></h3>
         </div>
-        {% if not select_comment_to_add_project %}
         <div class="comments-list">
             {% for comment in comment_list %}
             <div class="media">
@@ -25,7 +25,10 @@
             </div>
             {% endfor %}
         </div>
-        {%  else %}
+        {%  elif select_comment_form and comment_list %}
+        <div class="page-header">
+            <h3> Comments <small class="pull-right">{{ num_comments }} comments</small></h3>
+        </div>
         <div class="comments-list">
             <form action="{% url 'select-comments' project_title=project.url_detail user_id=project.user.id %}" method="post" class="form-horizontal" >
                 {% csrf_token %}
