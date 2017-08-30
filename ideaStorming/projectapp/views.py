@@ -328,7 +328,7 @@ class ProjectEditView(UpdateView):
             comment.day = humanize.naturalday(comment.publication_date)
         for comment in selected_comment_list:
             comment.day = humanize.naturalday(comment.publication_date)
-            
+            comment.form = UnSelectCommentForm( initial = {'idComment': comment.id})            
 
         context['project'] = project
         context['comment_list'] = comment_list

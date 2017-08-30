@@ -6,6 +6,7 @@
     </div>
 
     <div class="comments-list">
+        
         <table class="table table-condensed">
             <tbody>
                 {% for comment in selected_comment_list %}
@@ -13,11 +14,19 @@
                     <tr>
                         <td>{{ comment.comment }}</td>
                         <td class="text-right">{{ comment.user }} -- {{comment.day}}</td>
+                        <td>
+                            <form action="{% url 'unselect-comments' project_title=project.url_detail user_id=project.user.id %}" method="post">
+                                {% csrf_token %}
+                                {{ comment.form }}
+                                <input type="submit" value="X">
+                            </form>
+                        </td>
                     </tr>
                     {% endif %}
                 {% endfor %}
             </tbody>
         </table>
-    </div>
+        
+</div>
 </div>
 {% endif %}

@@ -140,5 +140,14 @@ class SelectCommentForm(forms.Form):
 
 
 class UnSelectCommentForm(forms.Form):
-    pass
+    idComment = forms.IntegerField(widget=forms.HiddenInput())
     
+    def save(self):
+        comment_id = self.cleaned_data['idComment']
+        comment = Comment.objects.get(id=comment_id)
+        comment.added_to_project = False
+        comment.save();
+
+
+
+
